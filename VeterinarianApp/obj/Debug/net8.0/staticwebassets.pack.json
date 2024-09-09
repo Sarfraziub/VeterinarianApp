@@ -1,0 +1,425 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\VeterinarianApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\VeterinarianApp.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\2023_Facebook_icon.svg 1.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\2023_Facebook_icon.svg 1.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\3938028 1.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\3938028 1.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Date_range_fill.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Date_range_fill.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Done.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Done.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Filter_alt.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Filter_alt.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Group 218.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Group 218.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Group 219.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Group 219.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Group 220.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Group 220.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Instagram_icon.png 1.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Instagram_icon.png 1.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Location.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Location.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\Phone_fill.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\Phone_fill.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\YouTube_icon_(2011-2013).svg 1.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\YouTube_icon_(2011-2013).svg 1.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\black-tiktok-logo 1.png",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\black-tiktok-logo 1.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\GuestHome\\fi-rs-globe.svg",
+      "PackagePath": "staticwebassets\\images\\GuestHome\\fi-rs-globe.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Home.svg",
+      "PackagePath": "staticwebassets\\images\\Home.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\HuntVet_logo.png",
+      "PackagePath": "staticwebassets\\images\\HuntVet_logo.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ListChecks.svg",
+      "PackagePath": "staticwebassets\\images\\ListChecks.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Logout.svg",
+      "PackagePath": "staticwebassets\\images\\Logout.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Arrow_left_long.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Arrow_left_long.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Arrow_right_long.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Arrow_right_long.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Edit-alt.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Edit-alt.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Ellipse 117.png",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Ellipse 117.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Home.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Home.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\ListChecks.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\ListChecks.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Logout.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Logout.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\MagnifyingGlass.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\MagnifyingGlass.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Setting.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Setting.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\Setting1.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\Setting1.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\User_fill_add.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\User_fill_add.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\logo.png",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\logo.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\mail-02.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\mail-02.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\stethoscope.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\stethoscope.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ManageVeterinarians\\supervisor_account.svg",
+      "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\supervisor_account.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Setting.svg",
+      "PackagePath": "staticwebassets\\images\\Setting.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Setting1.svg",
+      "PackagePath": "staticwebassets\\images\\Setting1.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Site-logo.png",
+      "PackagePath": "staticwebassets\\images\\Site-logo.png"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\VeterinarianHome\\stethoscope.svg",
+      "PackagePath": "staticwebassets\\images\\VeterinarianHome\\stethoscope.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\stethoscope.svg",
+      "PackagePath": "staticwebassets\\images\\stethoscope.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\supervisor_account.svg",
+      "PackagePath": "staticwebassets\\images\\supervisor_account.svg"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VeterinarianApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.VeterinarianApp.props",
+      "PackagePath": "build\\VeterinarianApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.VeterinarianApp.props",
+      "PackagePath": "buildMultiTargeting\\VeterinarianApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.VeterinarianApp.props",
+      "PackagePath": "buildTransitive\\VeterinarianApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

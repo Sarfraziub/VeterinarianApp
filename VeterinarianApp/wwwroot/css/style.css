@@ -1,0 +1,360 @@
+body {
+  background-color: #dad9d9 !important;
+}
+/* navbar */
+.border-bottom {
+  border-bottom: solid 2px #a0a0a0 !important;
+}
+
+.btn-custom-Orange {
+  background-color: #ff5e1a !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.btn-Orange {
+  background-color: #ff5e1a !important;
+}
+
+/* sidebar */
+.sidebar-bg {
+  background-color: #ff5e1a;
+}
+.sidebar-text {
+  font-family: Work Sans;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 12.9px;
+}
+.nav-link-Custom.active {
+  border-right: 5px solid #ffffff;
+  font-weight: bold;
+}
+.nav-link-custom.active {
+  border-right: 5px solid #ff5e1a;
+  font-weight: bold;
+}
+.sidebar-text {
+  font-family: Work Sans;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 12.9px;
+  color: #706f6f;
+}
+.nav-link-custom.active .sidebar-text,
+.nav-link-custom.active .icon-custom {
+  color: #ff5e1a;
+}
+
+/* Admin HOme page  */
+.heading {
+  color: #595959;
+  font-family: Work Sans;
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 34.02px;
+}
+
+.icon-container {
+  background-color: #ff5e1a;
+  width: 70px;
+  height: 70px;
+}
+
+.heading-color {
+  color: #ff5e1a;
+  font-family: Work Sans;
+  font-size: 29px;
+  font-weight: 700;
+}
+.text-color {
+  color: #595959;
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* fsdfsdfsdf */
+
+.Veterinarian-style {
+  font-family: Work Sans;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 25.81px;
+  text-align: left;
+  color: #595959;
+}
+.btn-success-custom {
+  background-color: #73b88f;
+  color: #ffffff;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+}
+.btn-success-custom:hover {
+  background-color: #579871;
+  color: #ffffff;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.btn-success-custom:active {
+  background-color: #579871 !important;
+  color: #ffffff !important;
+  border-color: #579871 !important ;
+}
+.profile-heding {
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 400;
+  color: #706f6f;
+}
+.profile-dis {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-weight: 400;
+  color: #e9aa62;
+}
+.light-text {
+  color: #b9b9b9;
+  font-family: Work Sans;
+  font-size: 12px;
+  font-weight: 400;
+}
+.dark-text {
+  color: #706f6f !important ;
+  font-family: Work Sans;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.btn-view {
+  background-color: #ff5e1a;
+  color: #ffffff;
+}
+.btn-view:hover {
+  background-color: #df561b;
+  color: #ffffff;
+}
+.btn-view:active {
+  background-color: #df561b !important;
+  color: #ffffff !important;
+  border-color: #df561b !important ;
+}
+
+.btn-Modify {
+  background-color: #e9aa62;
+  color: #ffffff;
+}
+.btn-Modify:hover {
+  background-color: #d19858;
+  color: #ffffff;
+}
+.btn-Modify:active {
+  color: #ffffff !important;
+  background-color: #d19858 !important;
+  border-color: #d19858 !important ;
+}
+.table > :not(caption) > * > * {
+  border-bottom: 0px !important;
+}
+
+.rounded-end-5 {
+  border-top-right-radius: 0px !important;
+}
+
+/* dssadasd */
+.admin-name-style {
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 700;
+  color: #595959;
+}
+
+.admin-name-dis {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9a9a9a;
+}
+
+.service-name {
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23.46px;
+  text-align: left;
+  color: #706f6f;
+}
+
+.modify-btn {
+  background-color: #e9aa62;
+  color: #ffffff;
+}
+
+.modify-btn:hover {
+  background-color: #d89b54;
+  color: #ffffff;
+}
+
+.modify-btn:active {
+  background-color: #d89b54 !important;
+  color: #ffffff !important;
+  border-color: #d19858 !important ;
+}
+
+/* fsdfsdfsdf */
+
+.edit-page-headng {
+  font-family: Work Sans;
+  font-size: 22px;
+  font-weight: 500;
+  color: #ff5e1a;
+}
+
+.input-label-style {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-weight: 400;
+  color: #595959;
+}
+
+.text-muted {
+  font-family: Work Sans;
+  font-size: 12px;
+  font-weight: 400;
+  color: #595959;
+}
+.custom-form-control {
+  background-color: #dad9d9;
+}
+
+.form-check-input:checked {
+  background-color: #df561b;
+  border-color: #df561b;
+}
+.form-check-input:focus {
+  border-color: #df561b;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #df561b34;
+}
+
+.form-control:focus {
+  border-color: #df561b;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #df561b34;
+}
+.form-select:focus {
+  border-color: #df561b;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #df561b34;
+}
+.body-bg {
+  background-color: #dad9d9;
+}
+
+/* sdfdsfdsfds */
+
+.rounded-left-pill {
+  border-top-left-radius: 50rem;
+  border-bottom-left-radius: 50rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.profile-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.services-grid li {
+  font-size: 14px;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+.hyperLink {
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff5e1a;
+  text-decoration: none;
+}
+
+.Filter {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.card-heding {
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.score-text {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ff5e1a;
+}
+.adress {
+  font-family: Work Sans;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8b8b8b;
+  text-decoration: none;
+}
+
+.service-item {
+  font-family: Work Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.08px;
+  text-align: left;
+  color: #a85151;
+}
+
+/* dasaasfsd */
+
+.card-icon-container {
+  background-color: #dad9d9;
+  width: 70px;
+  height: 70px;
+}
+
+.card-text-color {
+  color: #595959;
+  font-family: Work Sans;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+@media (max-width: 575.98px) { 
+  .custom-width{
+    max-width: 400px;
+  }
+ }
+
+ @media (min-width: 576px) and (max-width: 658.98px) { 
+  .custom-width{
+    max-width: 450px;
+  }
+  }

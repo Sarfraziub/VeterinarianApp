@@ -1,0 +1,85 @@
+﻿@page
+@model VeterinarianApp.Pages.Admin.ManageVeterinariansModel
+@{
+}
+<div class="text-center heading-color mb-4">
+    <h2>Manage Veterinarians</h2>
+</div>
+<div class="card rounded shadow custom-width">
+    <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-0 mt-3">
+        <div class="row w-100">
+            <div class="col-md-6">
+                <p class="Veterinarian-style mb-2 mb-md-0 card-title">
+                    Veterinarian list
+                </p>
+            </div>
+            <div class="col-md-6 pe-0">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-success-custom  ">
+                        <img src="/images/ManageVeterinarians/User_fill_add.svg"
+                             alt="" />
+                        Add Veterinarian
+                    </button>
+                    <button class="btn btn-success-custom">
+                        <img src="/images/ManageVeterinarians/mail-02.svg"
+                             alt="" />
+                        Invite Veterinarian
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="table-responsive ">
+            <table class="table">
+                <tr>
+                    <td class="ps-0" style="min-width: 250px;">
+                        <div class="d-flex">
+                            <img src="/images/ManageVeterinarians/Ellipse 117.png"
+                                 class="rounded-circle me-3"
+                                 alt="Vet Image" />
+                            <div>
+                                <span class="profile-heding">Dr. Jaylon Stanton</span>
+                                <span class="profile-dis d-block">Veterinarian</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="dark-text">
+                        <span class="light-text">Id : </span>201
+                    </td>
+                    <td class="dark-text">
+                        <span class="light-text">email : </span>johndoe@gmail.com
+                    </td>
+                    <td class="dark-text">
+                        <span class="light-text">Last Online : </span>2024/06/21
+                    </td>
+                    <td class="d-flex justify-content-end"
+                        style="min-width: 250px;">
+                        <button class="btn btn-view me-2">
+                            <img src="/images/ManageVeterinarians/MagnifyingGlass.svg"
+                                 alt="" />View
+                        </button>
+                        <button class="btn btn-Modify">
+                            <img src="/images/ManageVeterinarians/Edit-alt.svg"
+                                 alt="" />Modify
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-transparent border-0 py-4">
+        <div class="d-flex justify-content-center pe-1 align-items-center">
+            <button class="btn btn-view  me-2">
+                <img src="/images/ManageVeterinarians/Arrow_left_long.svg"
+                     alt="" />
+            </button>
+            <span class="mx-2">Page 1 out of 6</span>
+            <button class="btn btn-view ">
+                <img src="/images/ManageVeterinarians/Arrow_right_long.svg"
+                     alt="" />
+            </button>
+        </div>
+    </div>
+</div>
