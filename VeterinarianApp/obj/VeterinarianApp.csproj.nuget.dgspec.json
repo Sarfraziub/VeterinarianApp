@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj": {}
+    "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj": {}
   },
   "projects": {
-    "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj": {
+    "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj",
+        "projectUniqueName": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj",
         "projectName": "VeterinarianApp",
-        "projectPath": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj",
-        "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "D:\\Fiverr\\Ocean\\VeterinarianApp\\VeterinarianApp\\obj\\",
+        "projectPath": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\VeterinarianApp.csproj",
+        "packagesPath": "C:\\Users\\khali\\.nuget\\packages\\",
+        "outputPath": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +34,46 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

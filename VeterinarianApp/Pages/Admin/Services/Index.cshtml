@@ -1,0 +1,52 @@
+﻿@page
+@model VeterinarianApp.Pages.Admin.Services.IndexModel
+@{
+    ViewData["Title"] = "Services";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="header my-5">
+        <label class="admin-name-style">Hello, @User.Identity.Name</label>
+        <small class="d-block admin-name-dis">Have a nice day at work and stay healthy!</small>
+    </div>
+}
+
+
+<div class="text-center heading-color mb-4">
+    <h2>Manage Services</h2>
+</div>
+<!-- Manage Services Card -->
+<div class="card mx-auto p-3 shadow border-0" style="max-width: 500px">
+    <p class="Veterinarian-style">Services list</p>
+
+
+    <a class="btn modify-btn" asp-page="Create">
+        Create
+    </a>
+    <!-- Service Item List -->
+    <div class="table-responsive">
+        <table class="table">
+
+            @foreach (var service in Model.Services)
+            {
+                <tr class="service-item">
+                    <td class="dark-text">
+                        <span class="light-text">ID :</span> @service.Id
+                    </td>
+                    <td class="service-name">@service.Name</td>
+                    <td>
+                        <a class="btn modify-btn" asp-page="Edit" asp-route-id="@service.Id">
+                            <img src="/images/ManageVeterinarians/Edit-alt.svg"
+                                 alt="" />
+                            Modify
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+</div>

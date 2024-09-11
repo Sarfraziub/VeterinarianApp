@@ -59,12 +59,15 @@
         <div class="row justify-content-center align-items-center" style="height: 80vh;">
             <div class="col-md-4 text-center">
                 <label class="mb-4 heading">Admin Login</label>
-                <form>
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div> <!-- Displays model errors -->
+
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                        <input asp-for="Input.Email" class="form-control" placeholder="Enter username">
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Enter password">
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-Orange">Login</button>

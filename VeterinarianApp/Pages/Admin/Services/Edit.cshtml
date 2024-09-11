@@ -1,0 +1,17 @@
+﻿@page
+@model VeterinarianApp.Pages.Admin.Services.EditModel
+@{
+    ViewData["Title"] = "Edit Service";
+}
+
+<h2>Edit Service</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Service.Name"></label>
+        <input asp-for="Service.Name" class="form-control" />
+        <span asp-validation-for="Service.Name" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Service.Id" />
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,17 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@using System.Threading.Tasks
+@model VeterinarianApp.Pages.LogoutModel
+@{
+    ViewData["Title"] = "Logout";
+
+}
+
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
