@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VeterinarianApp.Models
 {
@@ -16,5 +17,12 @@ namespace VeterinarianApp.Models
         public string City { get; set; }
         public string Country { get; set; }
         public string ZipCode { get; set; }
+
+
+        public int? VeterinarianId { get; set; }
+        [ForeignKey(nameof(VeterinarianId))]
+        public virtual Veterinarian? Veterinarian { get; set; }
+
     }
+
 }

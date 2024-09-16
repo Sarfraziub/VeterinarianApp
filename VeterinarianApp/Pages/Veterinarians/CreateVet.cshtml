@@ -1,0 +1,65 @@
+﻿@page
+@model VeterinarianApp.Pages.Veterinarians.CreateVetModel
+@{
+}
+
+
+<h1>Create Veterinarian</h1>
+<form method="post">
+    <div>
+        <label asp-for="Veterinarian.FirstName"></label>
+        <input asp-for="Veterinarian.FirstName" />
+        <span asp-validation-for="Veterinarian.FirstName"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.LastName"></label>
+        <input asp-for="Veterinarian.LastName" />
+        <span asp-validation-for="Veterinarian.LastName"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.Email"></label>
+        <input asp-for="Veterinarian.Email" />
+        <span asp-validation-for="Veterinarian.Email"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.Password"></label>
+        <input asp-for="Veterinarian.Password" type="password" />
+        <span asp-validation-for="Veterinarian.Password"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.Phone"></label>
+        <input asp-for="Veterinarian.Phone" />
+        <span asp-validation-for="Veterinarian.Phone"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.Instagram"></label>
+        <input asp-for="Veterinarian.Instagram" />
+        <span asp-validation-for="Veterinarian.Instagram"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.Youtube"></label>
+        <input asp-for="Veterinarian.Youtube" />
+        <span asp-validation-for="Veterinarian.Youtube"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.X"></label>
+        <input asp-for="Veterinarian.X" />
+        <span asp-validation-for="Veterinarian.X"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.TIkTok"></label>
+        <input asp-for="Veterinarian.TIkTok" />
+        <span asp-validation-for="Veterinarian.TIkTok"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.HuntVetScore"></label>
+        <input asp-for="Veterinarian.HuntVetScore" />
+        <span asp-validation-for="Veterinarian.HuntVetScore"></span>
+    </div>
+    <div>
+        <label asp-for="Veterinarian.ApprovedBy"></label>
+        <input asp-for="Veterinarian.ApprovedBy" />
+        <span asp-validation-for="Veterinarian.ApprovedBy"></span>
+    </div>
+    <button type="submit">Create</button>
+</form>

@@ -1,9 +1,11 @@
 ﻿@page
 @model VeterinarianApp.Pages.Veterinarians.DashboardModel
 @{
+    Layout = "~/Pages/Shared/_LayoutVet.cshtml";
 }
+
 <div class="header my-5">
-    <label class="admin-name-style">Hello, Admin Name</label>
+    <label class="admin-name-style">Hello, @User.Identity.Name</label>
     <small class="d-block admin-name-dis">Have a nice day at work and stay healthy!</small>
 </div>
 <div class="text-center heading-color">
@@ -18,7 +20,7 @@
                      alt=""
                      class="d-block w-50" />
             </div>
-            <p class="card-text-color">Update Profile</p>
+            <a href="/Veterinarians/Profile"> <p class="card-text-color">Update Profile</p></a>
         </div>
     </div>
 </div>

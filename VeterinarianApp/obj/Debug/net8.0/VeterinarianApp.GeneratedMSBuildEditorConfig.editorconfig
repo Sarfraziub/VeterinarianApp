@@ -30,10 +30,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Admin/ManageServices.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU2VydmljZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Admin/ManageVeterinarians.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlVmV0ZXJpbmFyaWFucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,16 +58,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Shared/_LayoutVet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRWZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Veterinarians/VeterinarianLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmV0ZXJpbmFyaWFuc1xWZXRlcmluYXJpYW5Mb2dpbi5jc2h0bWw=
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/VeterinarianLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmV0ZXJpbmFyaWFuTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Veterinarians/CreateVet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmV0ZXJpbmFyaWFuc1xDcmVhdGVWZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Veterinarians/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmV0ZXJpbmFyaWFuc1xEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Veterinarians/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmV0ZXJpbmFyaWFuc1xQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/_ViewImports.cshtml]

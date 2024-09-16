@@ -32,6 +32,39 @@
     <div class="card-body ">
         <div class="table-responsive ">
             <table class="table">
+                @foreach (var veterinarian in Model.Veterinarians)
+                {
+                    <tr>
+                        <td class="ps-0" style="min-width: 250px;">
+                            <div class="d-flex">
+                                <img src="/images/ManageVeterinarians/Ellipse 117.png"
+                                     class="rounded-circle me-3"
+                                     alt="Vet Image" />
+                                <div>
+                                    <span class="profile-heding">@veterinarian.FirstName @veterinarian.LastName</span>
+                                    <span class="profile-dis d-block">Veterinarian</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="dark-text">
+                            <span class="light-text">Id : </span>@veterinarian.Id
+                        </td>
+                        <td class="dark-text">
+                            <span class="light-text">email : </span>@veterinarian.Email
+                        </td>
+                        <td class="dark-text">
+                            <span class="light-text">Last Online : </span>2024/06/21
+                        </td>
+                        <td class="d-flex justify-content-end"
+                            style="min-width: 250px;">
+                            <a class="btn btn-success-custom" asp-page="./AddEditVeterinarian" asp-route-id="@veterinarian.Id">
+                                <img src="/images/ManageVeterinarians/User_fill_add.svg"
+                                     alt="" />
+                                Modify
+                            </a>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td class="ps-0" style="min-width: 250px;">
                         <div class="d-flex">

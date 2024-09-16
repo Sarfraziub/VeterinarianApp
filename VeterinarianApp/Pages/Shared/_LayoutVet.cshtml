@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VeterinarianApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/VeterinarianApp.styles.css" asp-append-version="true" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="sticky-top ">
+        <nav class="border-bottom navbar navbar-expand-lg body-bg ">
+            <div class="container-fluid">
+                <!-- Logo on the left side -->
+                <a class="navbar-brand" href="#">
+                    <img src="/images/huntvet_logo.png" alt="Logo" height="40">
+                </a>
+
+                <!-- Navbar Toggler for mobile view -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links and button on the right side -->
+                <div class="collapse navbar-collapse justify-content-end"
+                     id="navbarNav">
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Hello @User.Identity.Name</a>
+                            </li>
+                        }
+
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/AdminLogin">For Hunters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/VeterinarianLogin">For Veterinarians</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Who We Are</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-custom-Orange ms-md-3 border-3" type="button">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar-bg py-3 ps-2"
+             id="sidebar"
+             style="height: 1024px;">
+            <ul class="nav flex-column">
+                <li class="nav-item py-3">
+                    <a class="nav-link  nav-link-Custom text-center p-0 @IsActive("/Veterinarians/Dashboard")" href="/Veterinarians/Dashboard">
+                        <div class="d-flex justify-content-center pe-1">
+                            <img src="/images/Home.svg" alt="" class="d-block" />
+                        </div>
+
+                        <span class="text-white d-none d-sm-block sidebar-text">HOME</span>
+                    </a>
+                </li>
+                <li class="nav-item py-3">
+                    <a class="nav-link  nav-link-Custom text-center p-0" href="#">
+                        <div class="d-flex justify-content-center pe-1">
+                            <img src="/images/Setting1.svg" alt="" class="d-block" />
+                        </div>
+                        <span class="text-white d-none d-sm-block sidebar-text">SETTINGS</span>
+                    </a>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item py-3">
+                        <form asp-page="/Logout" method="post" class="nav-link  nav-link-Custom text-center p-0">
+                            <button type="submit" class="btn btn-link nav-link-Custom text-center p-0">
+                                <div class="d-flex justify-content-center pe-1">
+                                    <img src="/images/Logout.svg" alt="" class="d-block" />
+                                </div>
+                                <span class="text-white d-none d-sm-block sidebar-text">LOGOUT</span>
+                            </button>
+                        </form>
+
+                    </li>
+                }
+
+            </ul>
+        </div>
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - VeterinarianApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+@functions {
+    // This method checks if the current page matches the given page name
+    public string IsActive(string pageName)
+    {
+        var currentPage = ViewContext.RouteData.Values["page"] as string;
+        return string.Equals(currentPage, pageName, StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    }
+}

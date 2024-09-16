@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,8 @@ using VeterinarianApp.Models;
 
 namespace VeterinarianApp.Pages.Admin.Services
 {
+    [Authorize(Roles = "Admin")]
+
     public class EditModel : PageModel
     {
 

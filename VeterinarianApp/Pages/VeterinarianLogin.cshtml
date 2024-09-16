@@ -1,4 +1,5 @@
 ﻿@page
+@using static VeterinarianApp.Pages.VeterinarianLoginModel
 @model VeterinarianLoginModel
 @{
     Layout = null;
@@ -39,10 +40,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">For Hunters</a>
+                            <a class="nav-link active" aria-current="page" href="/AdminLogin">For Hunters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">For Veterinarians</a>
+                            <a class="nav-link" href="/VeterinarianLogin">For Veterinarians</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Who We Are</a>
@@ -61,12 +62,12 @@
                 <form method="post">
                     <div asp-validation-summary="All" class="text-danger"></div> <!-- Displays model errors -->
                     <div class="mb-3">
-                        <input asp-for="Veterinarian.Email" class="form-control" />
-                        <span asp-validation-for="Veterinarian.Email" class="text-danger"></span>
+                        <input asp-for="InputModel.Email" class="form-control" />
+                        <span asp-validation-for="InputModel.Email" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input asp-for="Veterinarian.Password" class="form-control" />
-                        <span asp-validation-for="Veterinarian.Password" class="text-danger"></span>
+                        <input asp-for="InputModel.Password" class="form-control" />
+                        <span asp-validation-for="InputModel.Password" class="text-danger"></span>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-Orange">Login</button>

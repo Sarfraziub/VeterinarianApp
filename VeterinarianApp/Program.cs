@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VeterinarianApp.Data;
@@ -16,6 +17,23 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDefaultIdentity<AdminUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>() // Add roles support
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+builder.Services.AddScoped<IPasswordHasher<Veterinarian>, PasswordHasher<Veterinarian>>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.Cookie.Name = "YourAppName.Cookie";
+    //options.LoginPath = "/Account/Login";
+    //options.LogoutPath = "/Account/Logout";
+    //options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
 
 
 var app = builder.Build();
@@ -52,18 +70,20 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.Use(async (context, next) =>
-{
-    if (!context.User.Identity.IsAuthenticated && context.Request.Path != "/AdminLogin")
-    {
-        context.Response.Redirect("/AdminLogin");
-        return;
-    }
+//app.Use(async (context, next) =>
+//{
+//    if (!context.User.Identity.IsAuthenticated && context.Request.Path != "/AdminLogin")
+//    {
+//        context.Response.Redirect("/AdminLogin");
+//        return;
+//    }
 
-    await next();
-});
+//    await next();
+//});
 
 app.MapRazorPages();
+app.MapGet("/", () => Results.Redirect("/Index")); // Default route
+
 
 app.Run();
 

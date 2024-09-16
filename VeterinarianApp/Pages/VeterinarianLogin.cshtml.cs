@@ -8,7 +8,7 @@ using VeterinarianApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace VeterinarianApp.Pages.Veterinarians
+namespace VeterinarianApp.Pages
 {
     public class VeterinarianLoginModel : PageModel
     {
@@ -23,7 +23,7 @@ namespace VeterinarianApp.Pages.Veterinarians
         }
 
         [BindProperty]
-        public Veterinarian Veterinarian { get; set; }
+        public VeterinarianLoginInputModel InputModel { get; set; }
 
         public void OnGet()
         {
@@ -34,7 +34,7 @@ namespace VeterinarianApp.Pages.Veterinarians
             // Clear all existing errors from ModelState to focus only on login errors
             ModelState.Clear();
 
-            if (string.IsNullOrEmpty(Veterinarian.Email) || string.IsNullOrEmpty(Veterinarian.Password))
+            if (string.IsNullOrEmpty(InputModel.Email) || string.IsNullOrEmpty(InputModel.Password))
             {
                 ModelState.AddModelError(string.Empty, "Email and Password are required.");
                 return Page();
@@ -43,7 +43,7 @@ namespace VeterinarianApp.Pages.Veterinarians
 
 
             var vet = await _context.Veterinarians
-                .SingleOrDefaultAsync(v => v.Email == Veterinarian.Email);
+                .SingleOrDefaultAsync(v => v.Email == InputModel.Email);
 
             if (vet == null)
             {
@@ -51,7 +51,7 @@ namespace VeterinarianApp.Pages.Veterinarians
                 return Page();
             }
 
-            var result = _passwordHasher.VerifyHashedPassword(vet, vet.Password, Veterinarian.Password);
+            var result = _passwordHasher.VerifyHashedPassword(vet, vet.Password, InputModel.Password);
 
             if (result == PasswordVerificationResult.Failed)
             {
@@ -60,10 +60,10 @@ namespace VeterinarianApp.Pages.Veterinarians
             }
 
             var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, Veterinarian.Email),
-            new Claim(ClaimTypes.Role, "Veterinarian")
-        };
+            {
+                new Claim(ClaimTypes.Name, InputModel.Email),
+                new Claim(ClaimTypes.Role, "Veterinarian")
+            };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
@@ -73,7 +73,17 @@ namespace VeterinarianApp.Pages.Veterinarians
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
-            return RedirectToPage("/Index"); // Redirect to a specific page after login
+            return RedirectToPage("/Veterinarians/Dashboard");
         }
+
+
+
+        public class VeterinarianLoginInputModel
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
     }
+
 }

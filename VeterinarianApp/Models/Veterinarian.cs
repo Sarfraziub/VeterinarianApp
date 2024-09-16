@@ -17,8 +17,14 @@ namespace VeterinarianApp.Models
         public string Instagram { get; set; }
         public string Youtube { get; set; }
         public string X { get; set; }
+        public string FaceBook { get; set; }
         public string TIkTok { get; set; }
         public int HuntVetScore { get; set; }
         public int? ApprovedBy { get; set; }
+        public int? VetHuntScore { get; set; }
+        public string LicenseNo { get; set; }
+
+        public virtual Clinic? Clinic { get; set; }
+        public virtual ICollection<VeterinarianService>? VeterinarianServices { get; set; }
     }
 }

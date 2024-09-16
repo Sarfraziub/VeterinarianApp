@@ -20,6 +20,7 @@ namespace VeterinarianApp.Data
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<Response> Responses { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<VeterinarianService> VeterinarianServices { get; set; }
 
 
     }
