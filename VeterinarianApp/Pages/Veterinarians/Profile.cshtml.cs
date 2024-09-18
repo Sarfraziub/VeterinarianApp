@@ -64,13 +64,19 @@ namespace VeterinarianApp.Pages.Veterinarians
             // Handle Profile Photo upload
             if (ProfilePhoto != null && ProfilePhoto.Length > 0)
             {
-                // Assuming you save the file in a specific path
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhoto", ProfilePhoto.FileName);
-                using (var stream = new FileStream(path, FileMode.Create))
+
+                // Generate a unique file name
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePhoto.FileName);
+                // Path where the file will be stored
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await ProfilePhoto.CopyToAsync(stream);
                 }
-                veterinarianInDb.ProfilePhoto = ProfilePhoto.FileName; // Save the file name in the database
+
+                // Update Veterinarian's Picture property with the path
+                veterinarianInDb.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
             }
 
             veterinarianInDb.UpdatedAt = DateTime.Now; // Update the timestamp

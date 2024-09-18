@@ -37,9 +37,11 @@
                     <tr>
                         <td class="ps-0" style="min-width: 250px;">
                             <div class="d-flex">
-                                <img src="/images/ManageVeterinarians/Ellipse 117.png"
+                                <img src="@Url.Content(veterinarian.ProfilePhoto)"
                                      class="rounded-circle me-3"
-                                     alt="Vet Image" />
+                                     alt="Vet Image"
+                                     width="100"
+                                     height="100"/>
                                 <div>
                                     <span class="profile-heding">@veterinarian.FirstName @veterinarian.LastName</span>
                                     <span class="profile-dis d-block">Veterinarian</span>
@@ -65,7 +67,7 @@
                         </td>
                     </tr>
                 }
-                <tr>
+                @* <tr>
                     <td class="ps-0" style="min-width: 250px;">
                         <div class="d-flex">
                             <img src="/images/ManageVeterinarians/Ellipse 117.png"
@@ -97,7 +99,7 @@
                                  alt="" />Modify
                         </button>
                     </td>
-                </tr>
+                </tr> *@
 
             </table>
         </div>

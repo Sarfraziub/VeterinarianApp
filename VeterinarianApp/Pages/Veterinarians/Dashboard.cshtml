@@ -16,11 +16,11 @@
     <div class="col-md-4 mb-3">
         <div class="card p-3 text-center">
             <div class="align-items-center d-flex card-icon-container justify-content-center my-3 mx-auto rounded-circle text-white">
-                <img src="./aseets/images/VeterinarianHome/stethoscope.svg"
-                     alt=""
+                <img src="@Url.Content(Model.Veterinarian.ProfilePhoto)"
+                     alt="@Model.Veterinarian.FirstName"
                      class="d-block w-50" />
             </div>
-            <a href="/Veterinarians/Profile?id=@Model.VeterinarianId"> <p class="card-text-color">Update Profile</p></a>
+            <a href="/Veterinarians/Profile?id=@Model.Veterinarian.Id"> <p class="card-text-color">Update Profile</p></a>
         </div>
     </div>
 </div>

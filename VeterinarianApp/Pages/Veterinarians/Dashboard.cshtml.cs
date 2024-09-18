@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using VeterinarianApp.Data;
 using VeterinarianApp.Models;
 
 namespace VeterinarianApp.Pages.Veterinarians
@@ -9,9 +12,18 @@ namespace VeterinarianApp.Pages.Veterinarians
     [Authorize(Roles = "Veterinarian")]
     public class DashboardModel : PageModel
     {
-        public int VeterinarianId { get; set; }
+        private readonly ApplicationDbContext _context;
+        private readonly IPasswordHasher<Veterinarian> _passwordHasher;
 
-        public void OnGet()
+        public DashboardModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        [BindProperty]
+        public Veterinarian Veterinarian { get; set; }
+
+        public async Task<IActionResult> OnGet()
         {
 
             // Get the user ID from claims
@@ -20,9 +32,12 @@ namespace VeterinarianApp.Pages.Veterinarians
                 var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
                 if (userIdClaim != null)
                 {
-                    VeterinarianId = int.Parse(userIdClaim.Value); // Convert to int
+                    var VeterinarianId = int.Parse(userIdClaim.Value);
+                    Veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Id == VeterinarianId);
                 }
             }
+
+            return Page();
 
         }
     }
