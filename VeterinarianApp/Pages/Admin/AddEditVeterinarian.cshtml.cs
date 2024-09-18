@@ -169,7 +169,8 @@ namespace VeterinarianApp.Pages.Admin
                 veterinarianToUpdate.ApprovedBy = Veterinarian.ApprovedBy;
                 veterinarianToUpdate.HuntVetScore = Veterinarian.HuntVetScore;
                 veterinarianToUpdate.ProfilePhoto = Veterinarian.ProfilePhoto.IsNullOrEmpty() ? veterinarianToUpdate.ProfilePhoto : Veterinarian.ProfilePhoto;
-
+                if (!string.IsNullOrWhiteSpace(Veterinarian.Password))
+                    veterinarianToUpdate.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
 
                 // Update clinic
                 if (veterinarianToUpdate.Clinic != null)
@@ -216,7 +217,11 @@ namespace VeterinarianApp.Pages.Admin
             else // Add mode
             {
 
-                Veterinarian.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
+                //Hashed password
+                if (!string.IsNullOrWhiteSpace(Veterinarian.Password))
+                    Veterinarian.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
+
+
                 _context.Veterinarians.Add(Veterinarian);
                 await _context.SaveChangesAsync();
 

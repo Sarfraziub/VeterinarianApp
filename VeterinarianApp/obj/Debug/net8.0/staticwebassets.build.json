@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CERQN+3879K+CwlN96Epio+kN3uoxmKUxH4GRRuACvU=",
+  "Hash": "ZhWk0YEDUqOE3aSDkCPGT4lM8/bgSP+ZvZs0qjgY9Ng=",
   "Source": "VeterinarianApp",
   "BasePath": "_content/VeterinarianApp",
   "Mode": "Default",
@@ -1896,6 +1896,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\ProfilePhotos\\1f6cfef1-447b-491a-a801-dc19c37d5405.png"
+    },
+    {
+      "Identity": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ProfilePhotos\\2dcffb7e-0f08-4089-ad9f-c813fa9fce08.jpg",
+      "SourceId": "VeterinarianApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\",
+      "BasePath": "_content/VeterinarianApp",
+      "RelativePath": "images/ProfilePhotos/2dcffb7e-0f08-4089-ad9f-c813fa9fce08.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\ProfilePhotos\\2dcffb7e-0f08-4089-ad9f-c813fa9fce08.jpg"
     },
     {
       "Identity": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ProfilePhotos\\4c314c16-68b9-4c7d-99a2-fe02a0e67538.png",

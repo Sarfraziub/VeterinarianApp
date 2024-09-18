@@ -62,6 +62,7 @@ namespace VeterinarianApp.Pages
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, InputModel.Email),
+                new Claim(ClaimTypes.NameIdentifier, vet.Id.ToString()),
                 new Claim(ClaimTypes.Role, "Veterinarian")
             };
 
