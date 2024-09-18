@@ -23,8 +23,14 @@ namespace VeterinarianApp.Models
         public int? ApprovedBy { get; set; }
         public int? VetHuntScore { get; set; }
         public string LicenseNo { get; set; }
+        public string? ProfilePhoto { get; set; }
 
         public virtual Clinic? Clinic { get; set; }
         public virtual ICollection<VeterinarianService>? VeterinarianServices { get; set; }
+
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
+
+
     }
 }

@@ -1,7 +1,10 @@
+using Azure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using VeterinarianApp.Data;
 using VeterinarianApp.Models;
 
@@ -12,10 +15,12 @@ namespace VeterinarianApp.Pages.Admin
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly IPasswordHasher<Veterinarian> _passwordHasher;
 
-        public AddEditVeterinarianModel(ApplicationDbContext context)
+        public AddEditVeterinarianModel(ApplicationDbContext context, IPasswordHasher<Veterinarian> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
 
         [BindProperty]
@@ -28,11 +33,26 @@ namespace VeterinarianApp.Pages.Admin
         public List<int> SelectedServiceIds { get; set; }
 
         public IList<Service> Services { get; set; }
+
+        [BindProperty]
+        public Dictionary<int, SurveyResponse> SurveyResponses { get; set; }
+
+        public IList<SurveryQuestion> SurveyQuestions { get; set; }
+        public IList<SurveyOption> SurveyOptions { get; set; }
+
+        [BindProperty]
+        public IFormFile? ProfilePhoto { get; set; } // To handle the file upload 
+
+
+
         public bool IsEditMode { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             Services = await _context.Services.ToListAsync();
+            // Retrieve survey questions and options
+            SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
+            SurveyOptions = await _context.SurveyOptions.ToListAsync();
 
             if (id.HasValue)
             {
@@ -50,6 +70,19 @@ namespace VeterinarianApp.Pages.Admin
                 Clinic = Veterinarian.Clinic;
                 SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();
                 IsEditMode = true;
+
+
+                var responses = await _context.SurveyResponse
+                    .Where(sr => sr.VeterinarianId == id)
+                    .ToListAsync();
+
+                SurveyResponses = SurveyQuestions.ToDictionary(
+                    q => q.SurveyQuestionId,
+                    q => responses.FirstOrDefault(r => r.SurveyQuestionId == q.SurveyQuestionId) ?? new SurveyResponse
+                    {
+                        SurveyQuestionId = q.SurveyQuestionId,
+                        VeterinarianId = Veterinarian.Id
+                    });
             }
             else
             {
@@ -57,6 +90,13 @@ namespace VeterinarianApp.Pages.Admin
                 Clinic = new Clinic();
                 SelectedServiceIds = new List<int>();
                 IsEditMode = false;
+
+
+                SurveyResponses = SurveyQuestions.ToDictionary(
+                    q => q.SurveyQuestionId,
+                    q => new SurveyResponse { SurveyQuestionId = q.SurveyQuestionId }
+                );
+
             }
 
             return Page();
@@ -69,8 +109,39 @@ namespace VeterinarianApp.Pages.Admin
             if (!ModelState.IsValid)
             {
                 Services = await _context.Services.ToListAsync();
+                SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
+                SurveyOptions = await _context.SurveyOptions.ToListAsync();
+
+                SurveyResponses = _context.SurveryQuestions.ToDictionary(
+                    q => q.SurveyQuestionId,
+                    q => new SurveyResponse { SurveyQuestionId = q.SurveyQuestionId }
+                );
+                IsEditMode = true;
                 return Page();
             }
+
+            //Add update profile photo
+            if (ProfilePhoto != null)
+            {
+                // Generate a unique file name
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePhoto.FileName);
+                // Path where the file will be stored
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ProfilePhoto.CopyToAsync(stream);
+                }
+
+                // Update Veterinarian's Picture property with the path
+                Veterinarian.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
+            }
+
+
+
+
+
+
 
             if (Veterinarian.Id > 0) // Edit mode
             {
@@ -88,7 +159,6 @@ namespace VeterinarianApp.Pages.Admin
                 veterinarianToUpdate.FirstName = Veterinarian.FirstName;
                 veterinarianToUpdate.LastName = Veterinarian.LastName;
                 veterinarianToUpdate.Email = Veterinarian.Email;
-                veterinarianToUpdate.Password = Veterinarian.Password;
                 veterinarianToUpdate.Phone = Veterinarian.Phone;
                 veterinarianToUpdate.LicenseNo = Veterinarian.LicenseNo;
                 veterinarianToUpdate.X = Veterinarian.X;
@@ -98,6 +168,7 @@ namespace VeterinarianApp.Pages.Admin
                 veterinarianToUpdate.Instagram = Veterinarian.Instagram;
                 veterinarianToUpdate.ApprovedBy = Veterinarian.ApprovedBy;
                 veterinarianToUpdate.HuntVetScore = Veterinarian.HuntVetScore;
+                veterinarianToUpdate.ProfilePhoto = Veterinarian.ProfilePhoto.IsNullOrEmpty() ? veterinarianToUpdate.ProfilePhoto : Veterinarian.ProfilePhoto;
 
 
                 // Update clinic
@@ -133,9 +204,19 @@ namespace VeterinarianApp.Pages.Admin
                     };
                     _context.VeterinarianServices.Add(vetService);
                 }
+
+                var existingResponses = await _context.SurveyResponse
+                    .Where(sr => sr.VeterinarianId == Veterinarian.Id)
+                    .ToListAsync();
+
+                _context.SurveyResponse.RemoveRange(existingResponses);
+                await _context.SaveChangesAsync();
+
             }
             else // Add mode
             {
+
+                Veterinarian.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
                 _context.Veterinarians.Add(Veterinarian);
                 await _context.SaveChangesAsync();
 
@@ -155,6 +236,25 @@ namespace VeterinarianApp.Pages.Admin
                     _context.VeterinarianServices.Add(vetService);
                 }
             }
+
+
+
+            // Add new responses
+            foreach (var kvp in SurveyResponses)
+            {
+                var questionId = kvp.Key;
+                var response = kvp.Value;
+
+                if (!string.IsNullOrEmpty(response.ResponseText))
+                {
+                    response.VeterinarianId = Veterinarian.Id;
+                    response.SurveyQuestionId = questionId;
+                    _context.SurveyResponse.Add(response);
+                }
+            }
+
+
+
 
             await _context.SaveChangesAsync();
             return RedirectToPage("/Admin/ManageVeterinarians"); // Redirect to a list or another page

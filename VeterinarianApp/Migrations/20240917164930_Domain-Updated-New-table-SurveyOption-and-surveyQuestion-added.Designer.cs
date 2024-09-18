@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VeterinarianApp.Data;
 
@@ -11,9 +12,11 @@ using VeterinarianApp.Data;
 namespace VeterinarianApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240917164930_Domain-Updated-New-table-SurveyOption-and-surveyQuestion-added")]
+    partial class DomainUpdatedNewtableSurveyOptionandsurveyQuestionadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,11 +314,11 @@ namespace VeterinarianApp.Migrations
 
             modelBuilder.Entity("VeterinarianApp.Models.SurveryQuestion", b =>
                 {
-                    b.Property<int>("SurveyQuestionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SurveyQuestionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
@@ -327,7 +330,7 @@ namespace VeterinarianApp.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.HasKey("SurveyQuestionId");
+                    b.HasKey("Id");
 
                     b.ToTable("SurveryQuestions");
                 });
@@ -428,9 +431,6 @@ namespace VeterinarianApp.Migrations
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProfilePhoto")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TIkTok")

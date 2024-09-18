@@ -10,13 +10,13 @@
     <div class="pb-3">
         <h2 class="edit-page-headng">Personal Information</h2>
     </div>
-    <form method="post" class="px-4">
+    <form method="post" class="px-4" enctype="multipart/form-data">
         <!-- Veterinarian Name -->
         @if (Model.IsEditMode)
         {
             <input type="hidden" asp-for="Veterinarian.Id" />
         }
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="All" class="text-danger"></div> 
 
 
         <label class="Veterinarian-style">Veterinarian Name</label>
@@ -62,16 +62,14 @@
             <div class="form-group mb-3">
                 <label for="password" class="input-label-style">Password</label>
                 <input asp-for="Veterinarian.Password" type="password"
-                       class="form-control custom-form-control"
-                       required />
+                       class="form-control custom-form-control" is-edit-mode="@Model.IsEditMode" required />
                 <span asp-validation-for="Veterinarian.Password" class="text-danger"></span>
 
             </div>
             <div class="form-group mb-3">
                 <label for="confirmPassword" class="input-label-style">Re-type Password</label>
-                <input type="password"
-                       class="form-control custom-form-control"
-                       required />
+                <input type="password" asp-for="Veterinarian.ConfirmPassword" is-edit-mode="@Model.IsEditMode"
+                       class="form-control custom-form-control" />
             </div>
 
             <div class="form-group mb-3">
@@ -98,15 +96,21 @@
             </div>
 
             <div class="form-group mb-3 d-md-flex gap-5 align-items-baseline">
-                <label for="profilePicture" class="input-label-style">Profile Picture</label>
+                <label asp-for="ProfilePhoto" class="input-label-style">Profile Picture</label>
                 <div class="btn btn-view w-25"
                      onclick="document.getElementById('profilePicture').click()">
-                    <input type="file"
+                    <input type="file" asp-for="ProfilePhoto"
                            class="custom-form-control-file"
-                           id="profilePicture"
+                           id="ProfilePhoto"
                            style="opacity: 0; position: absolute; z-index: -1" />
                     <span>Upload File</span>
                 </div>
+                @if (!string.IsNullOrEmpty(Model.Veterinarian.ProfilePhoto))
+                {
+                    <div>
+                        <img src="@Url.Content(Model.Veterinarian.ProfilePhoto)" alt="Profile Picture" style="max-width: 200px; height: auto;" />
+                    </div>
+                }
             </div>
         </div>
         <!-- Social Media -->
@@ -266,6 +270,41 @@
                     </label>
                 </div>
             }
+        </div>
+
+
+        <!-- Survey Section -->
+        <div class="pt-3">
+            <h2 class="edit-page-headng">Survey</h2>
+        </div>
+
+        <div class="body-bg p-3">
+            <div class="border-bottom">
+                <label class="form-label input-label-style">Survey Question</label>
+            </div>
+            @foreach (var question in Model.SurveyQuestions)
+            {
+                <div class="mb-3">
+                    <input type="hidden" asp-for="@question.SurveyQuestionId" />
+                    <label class="form-label input-label-style">@question.Text</label>
+                    @if (Model.SurveyOptions.Any(o => o.SurveyQuestionId == question.SurveyQuestionId))
+                    {
+                        <select asp-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="form-select">
+                            <option value="">Select an option</option>
+                            @foreach (var option in Model.SurveyOptions.Where(o => o.SurveyQuestionId == question.SurveyQuestionId))
+                            {
+                                <option value="@option.Text">@option.Text</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <input type="text" asp-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="form-control" />
+                    }
+                    <span asp-validation-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="text-danger"></span>
+                </div>
+            }
+
         </div>
 
 

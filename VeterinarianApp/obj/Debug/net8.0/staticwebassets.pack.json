@@ -149,6 +149,18 @@
       "PackagePath": "staticwebassets\\images\\ManageVeterinarians\\supervisor_account.svg"
     },
     {
+      "Id": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ProfilePhotos\\1f6cfef1-447b-491a-a801-dc19c37d5405.png",
+      "PackagePath": "staticwebassets\\images\\ProfilePhotos\\1f6cfef1-447b-491a-a801-dc19c37d5405.png"
+    },
+    {
+      "Id": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ProfilePhotos\\4c314c16-68b9-4c7d-99a2-fe02a0e67538.png",
+      "PackagePath": "staticwebassets\\images\\ProfilePhotos\\4c314c16-68b9-4c7d-99a2-fe02a0e67538.png"
+    },
+    {
+      "Id": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\ProfilePhotos\\7f6676b1-9c15-474a-a6b6-10c116237f7c.png",
+      "PackagePath": "staticwebassets\\images\\ProfilePhotos\\7f6676b1-9c15-474a-a6b6-10c116237f7c.png"
+    },
+    {
       "Id": "D:\\My Extra Projects\\Srf\\VeterinarianApp\\VeterinarianApp\\wwwroot\\images\\Setting.svg",
       "PackagePath": "staticwebassets\\images\\Setting.svg"
     },
