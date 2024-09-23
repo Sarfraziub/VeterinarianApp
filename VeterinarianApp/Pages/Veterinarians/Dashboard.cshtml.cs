@@ -34,6 +34,10 @@ namespace VeterinarianApp.Pages.Veterinarians
                 {
                     var VeterinarianId = int.Parse(userIdClaim.Value);
                     Veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Id == VeterinarianId);
+                    if (Veterinarian.ProfilePhoto != null)
+                    {
+                        Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                    }
                 }
             }
 

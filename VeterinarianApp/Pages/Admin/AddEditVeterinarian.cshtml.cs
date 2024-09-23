@@ -16,11 +16,14 @@ namespace VeterinarianApp.Pages.Admin
 
         private readonly ApplicationDbContext _context;
         private readonly IPasswordHasher<Veterinarian> _passwordHasher;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AddEditVeterinarianModel(ApplicationDbContext context, IPasswordHasher<Veterinarian> passwordHasher)
+
+        public AddEditVeterinarianModel(ApplicationDbContext context, IPasswordHasher<Veterinarian> passwordHasher, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _passwordHasher = passwordHasher;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
@@ -66,7 +69,10 @@ namespace VeterinarianApp.Pages.Admin
                 {
                     return NotFound();
                 }
-
+                if (Veterinarian.ProfilePhoto != null)
+                {
+                    Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                }
                 Clinic = Veterinarian.Clinic;
                 SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();
                 IsEditMode = true;
@@ -119,29 +125,6 @@ namespace VeterinarianApp.Pages.Admin
                 IsEditMode = true;
                 return Page();
             }
-
-            //Add update profile photo
-            if (ProfilePhoto != null)
-            {
-                // Generate a unique file name
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePhoto.FileName);
-                // Path where the file will be stored
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
-                // Save the file
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await ProfilePhoto.CopyToAsync(stream);
-                }
-
-                // Update Veterinarian's Picture property with the path
-                Veterinarian.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
-            }
-
-
-
-
-
-
 
             if (Veterinarian.Id > 0) // Edit mode
             {
@@ -257,11 +240,32 @@ namespace VeterinarianApp.Pages.Admin
                     _context.SurveyResponse.Add(response);
                 }
             }
-
-
-
-
             await _context.SaveChangesAsync();
+            //Add update profile photo
+            if (ProfilePhoto != null)
+            {
+                var fileName = "Profilepicture.png"; 
+                var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString());
+
+                // Ensure the directory exists, if not, create it
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                var filePath = Path.Combine(directoryPath, fileName);
+
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ProfilePhoto.CopyToAsync(stream);
+                }
+                Veterinarian.ProfilePhoto = $"/assets/Veterinarian/";
+                var vetCurrent = _context.Veterinarians.Where(x => x.Id == Veterinarian.Id).FirstOrDefault();
+                if (vetCurrent != null) { vetCurrent.ProfilePhoto = Veterinarian.ProfilePhoto;
+                    _context.SaveChanges();
+                }
+            }
             return RedirectToPage("/Admin/ManageVeterinarians"); // Redirect to a list or another page
         }
 
