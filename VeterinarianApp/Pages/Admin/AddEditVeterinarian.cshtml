@@ -125,7 +125,7 @@
             </div>
 
             <div class="form-group mb-3">
-                <label for="twitter" class="input-label-style">Twitter</label>
+                <label for="twitter" class="input-label-style">X</label>
                 <input asp-for="Veterinarian.X" class="form-control custom-form-control" />
                 <span asp-validation-for="Veterinarian.X" class="text-danger"></span>
 
@@ -148,7 +148,7 @@
             </div>
 
             <div class="form-group mb-3">
-                <label for="youtube" class="input-label-style">YouTube</label>
+                <label for="youtube" class="input-label-style">Tik Tok</label>
                 <input asp-for="Veterinarian.Youtube"
                        class="form-control custom-form-control" />
                 <span asp-validation-for="Veterinarian.Youtube" class="text-danger"></span>
@@ -256,12 +256,12 @@
         <div class="body-bg p-3">
             <div>
                 <label class="input-label-style">
-                    What services do you and clinic provide that are of intrest
+                    What services do you and clinic provide that are of interest
                     to sporting dog enthusiasts
                     <span class="text-muted">(required) </span>
                 </label>
             </div>
-            <div class="input-label-style">Check alla that aplly</div>
+            <div class="input-label-style">Check all that apply</div>
 
             @foreach (var service in Model.Services)
             {

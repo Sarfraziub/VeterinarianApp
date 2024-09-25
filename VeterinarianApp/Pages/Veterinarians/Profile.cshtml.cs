@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,10 +14,12 @@ namespace VeterinarianApp.Pages.Veterinarians
     {
         private readonly ApplicationDbContext _context;
         private readonly IPasswordHasher<Veterinarian> _passwordHasher;
-        public ProfileModel(ApplicationDbContext context, IPasswordHasher<Veterinarian> passwordHasher)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ProfileModel(ApplicationDbContext context, IPasswordHasher<Veterinarian> passwordHasher, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _passwordHasher = passwordHasher;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
@@ -31,6 +34,10 @@ namespace VeterinarianApp.Pages.Veterinarians
             if (Veterinarian == null)
             {
                 return NotFound();
+            }
+            if (Veterinarian.ProfilePhoto != null)
+            {
+                Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
             }
             return Page();
         }
@@ -64,19 +71,34 @@ namespace VeterinarianApp.Pages.Veterinarians
             // Handle Profile Photo upload
             if (ProfilePhoto != null && ProfilePhoto.Length > 0)
             {
+                //var fileName = "Profilepicture.png";
+                //// Path where the file will be stored
+                //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
+                //// Save the file
+                //using (var stream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    await ProfilePhoto.CopyToAsync(stream);
+                //}
 
-                // Generate a unique file name
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ProfilePhoto.FileName);
-                // Path where the file will be stored
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
+                //// Update Veterinarian's Picture property with the path
+                //veterinarianInDb.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
+                var fileName = "Profilepicture.png";
+                var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString());
+
+                // Ensure the directory exists, if not, create it
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                var filePath = Path.Combine(directoryPath, fileName);
+
                 // Save the file
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await ProfilePhoto.CopyToAsync(stream);
                 }
-
-                // Update Veterinarian's Picture property with the path
-                veterinarianInDb.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
+                veterinarianInDb.ProfilePhoto = $"/assets/Veterinarian/";
             }
 
             veterinarianInDb.UpdatedAt = DateTime.Now; // Update the timestamp

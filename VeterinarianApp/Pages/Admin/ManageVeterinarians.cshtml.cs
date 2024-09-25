@@ -29,6 +29,13 @@ namespace VeterinarianApp.Pages.Admin
         public async Task OnGetAsync()
         {
             Veterinarians = await _context.Veterinarians.ToListAsync();
+            foreach (var item in Veterinarians)
+            {
+                if (item.ProfilePhoto != null)
+                {
+                    item.ProfilePhoto += $"{item.Id}/Profilepicture.png";
+                }
+            }
         }
 
 
