@@ -14,11 +14,11 @@ namespace VeterinarianApp.Models
         public string Phone { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public string Instagram { get; set; }
-        public string Youtube { get; set; }
-        public string X { get; set; }
-        public string FaceBook { get; set; }
-        public string TIkTok { get; set; }
+        public string? Instagram { get; set; }
+        public string? Youtube { get; set; }
+        public string? X { get; set; }
+        public string? FaceBook { get; set; }
+        public string? TIkTok { get; set; }
         public int HuntVetScore { get; set; }
         public int? ApprovedBy { get; set; }
         public int? VetHuntScore { get; set; }

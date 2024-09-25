@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VeterinarianApp.Data;
+using VeterinarianApp.Helpers;
 using VeterinarianApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,9 @@ builder.Services.AddAuthentication(options =>
     //options.LogoutPath = "/Account/Logout";
     //options.AccessDeniedPath = "/Account/AccessDenied";
 });
+// Load configuration from appsettings.json
+
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
 
 

@@ -20,7 +20,9 @@
                              alt="" />
                         Add Veterinarian
                     </a>
-                    <button class="btn btn-success-custom">
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success-custom" id="launchModal">
                         <img src="/images/ManageVeterinarians/mail-02.svg"
                              alt="" />
                         Invite Veterinarian
@@ -41,7 +43,7 @@
                                      class="rounded-circle me-3"
                                      alt="Vet Image"
                                      width="100"
-                                     height="100"/>
+                                     height="100" />
                                 <div>
                                     <span class="profile-heding">@veterinarian.FirstName @veterinarian.LastName</span>
                                     <span class="profile-dis d-block">Veterinarian</span>
@@ -67,39 +69,6 @@
                         </td>
                     </tr>
                 }
-                @* <tr>
-                    <td class="ps-0" style="min-width: 250px;">
-                        <div class="d-flex">
-                            <img src="/images/ManageVeterinarians/Ellipse 117.png"
-                                 class="rounded-circle me-3"
-                                 alt="Vet Image" />
-                            <div>
-                                <span class="profile-heding">Dr. Jaylon Stanton</span>
-                                <span class="profile-dis d-block">Veterinarian</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="dark-text">
-                        <span class="light-text">Id : </span>201
-                    </td>
-                    <td class="dark-text">
-                        <span class="light-text">email : </span>johndoe@gmail.com
-                    </td>
-                    <td class="dark-text">
-                        <span class="light-text">Last Online : </span>2024/06/21
-                    </td>
-                    <td class="d-flex justify-content-end"
-                        style="min-width: 250px;">
-                        <button class="btn btn-view me-2">
-                            <img src="/images/ManageVeterinarians/MagnifyingGlass.svg"
-                                 alt="" />View
-                        </button>
-                        <button class="btn btn-Modify">
-                            <img src="/images/ManageVeterinarians/Edit-alt.svg"
-                                 alt="" />Modify
-                        </button>
-                    </td>
-                </tr> *@
 
             </table>
         </div>
@@ -118,3 +87,78 @@
         </div>
     </div>
 </div>
+
+<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Invite Veterenarian</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="vetEmail" class="input-label-style">Email</label>
+                    <input type="email" id="vetEmail" class="form-control custom-form-control" />
+                </div>
+                <div id="errorMessage" style="color:red; display:none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeModal">Close</button>
+                <button type="button" id="sendEmail" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+                 < script src = "https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script>
+        $(document).ready(function () {
+            $('#launchModal').click(function () {
+                $('#emailModal').modal('show'); // Show the modal
+            });
+            $('#emailModal').on('hidden.bs.modal', function () {
+                $('#vetEmail').val(''); // Clear the email input
+                $('#errorMessage').hide(); // Hide the error message
+            });
+        });
+        // Hide modal when close button is clicked
+        $('#closeModal').click(function () {
+            $('#emailModal').modal('hide'); // Hide the modal
+        });
+
+        $('#sendEmail').click(async function () {
+            const email = $('#vetEmail').val();
+            const errorMessageDiv = $('#errorMessage');
+            errorMessageDiv.hide(); // Reset error message
+
+            try {
+                const token = $('input[name="__RequestVerificationToken"]').val();
+                const response = await fetch('/Admin/ManageVeterinarians?handler=SendEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ Email: email })
+                });
+
+                if (response.ok) {
+                    alert('Email sent successfully!');
+                    $('#emailModal').modal('hide'); // Close modal
+                } else {
+                    const errorText = await response.text();
+                    errorMessageDiv.text(errorText); // Set error message
+                    errorMessageDiv.show(); // Show error message
+                }
+            } catch (error) {
+                errorMessageDiv.text('An unexpected error occurred.'); // Handle unexpected errors
+                errorMessageDiv.show(); // Show error message
+            }
+        });
+    </script>
+}

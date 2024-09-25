@@ -18,6 +18,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\My Extra Projects\Srf\VeterinarianApp\VeterinarianApp
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/Account/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxTaWdudXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/My Extra Projects/Srf/VeterinarianApp/VeterinarianApp/Pages/AdminLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

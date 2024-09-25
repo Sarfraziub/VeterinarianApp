@@ -1,0 +1,366 @@
+﻿@page
+@model VeterinarianApp.Pages.Account.SignupModel
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinarian Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+          rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    @* <link href="./aseets/style.css" rel="stylesheet" /> *@
+    <link href="../../css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="sticky-top ">
+        <nav class="navbar navbar-expand-lg border-bottom navbar navbar-expand-lg body-bg ">
+            <div class="container-fluid">
+                <!-- Logo on the left side -->
+                <a class="navbar-brand" href="#">
+                    <img src="../../images/huntvet_logo.png" alt="Logo" width="40" height="40">
+                </a>
+
+                <!-- Navbar Toggler for mobile view -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+        </nav>
+    </div>
+    <!-- Login Form -->
+    <div class="container">
+        <div class="text-center heading-color mb-4">
+            <h2>Signup for Veterinarian</h2>
+        </div>
+        <div class="bg-white card shadow rounded border-0 p-4 mb-4 custom-width">
+            <div class="pb-3">
+                <h2 class="edit-page-headng">Personal Information</h2>
+            </div>
+            <form method="post" class="px-4" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Veterinarian.Email" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <label class="Veterinarian-style">Veterinarian Name</label>
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="form-group mb-3 col-md-6">
+                            <label for="firstName" class="input-label-style">First Name (required)</label>
+                            <input asp-for="Veterinarian.FirstName"
+                                   class="form-control custom-form-control"
+                                   required />
+                            <span asp-validation-for="Veterinarian.FirstName" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group mb-3 col-md-6">
+                            <label for="lastName" class="input-label-style">Last Name (required)</label>
+                            <input asp-for="Veterinarian.LastName"
+                                   class="form-control custom-form-control"
+                                   required />
+                            <span asp-validation-for="Veterinarian.LastName" class="text-danger"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="email" class="input-label-style">Personal Email (required)</label>
+                        <small class="form-text text-muted d-block">
+                            We promise not to share this with the public. This is how
+                            we'll contact you about your profile.
+                        </small>
+                        <input asp-for="Veterinarian.Email" class="form-control custom-form-control" required disabled />
+                        <span asp-validation-for="Veterinarian.Email" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="updates" />
+                        <label class="form-check-label input-label-style input-label-style"
+                               for="updates">Sign up for news & Updates</label>
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <label for="password" class="input-label-style">Password</label>
+                        <input asp-for="Veterinarian.Password" type="password"
+                               class="form-control custom-form-control" required />
+                        <span asp-validation-for="Veterinarian.Password" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="confirmPassword" class="input-label-style">Re-type Password</label>
+                        <input type="password" asp-for="Veterinarian.ConfirmPassword"
+                               class="form-control custom-form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="personalNumber" class="input-label-style">Personal Number (required)</label>
+                        <small class="form-text text-muted d-block">We promise not to share this with the public.</small>
+                        <input asp-for="Veterinarian.Phone" type="tel"
+                               class="form-control custom-form-control"
+                               required />
+                        <span asp-validation-for="Veterinarian.Phone" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="license" class="input-label-style">Veterinary License</label>
+                        <small class="form-text text-muted d-block">
+                            This will not be shared with the public. We will use it to
+                            validate your credentials.
+                        </small>
+                        <input asp-for="Veterinarian.LicenseNo"
+                               class="form-control custom-form-control"
+                               required />
+                        <span asp-validation-for="Veterinarian.LicenseNo" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3 d-md-flex gap-5 align-items-baseline">
+                        <label asp-for="ProfilePhoto" class="input-label-style">Profile Picture</label>
+                        <div class="btn btn-view w-25"
+                             onclick="document.getElementById('ProfilePhoto').click()">
+                            <input type="file" asp-for="ProfilePhoto"
+                                   class="custom-form-control-file"
+                                   onchange="previewImage(event)"
+                                   style="opacity: 0; position: absolute; z-index: -1" />
+                            <span>Upload File</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Veterinarian.ProfilePhoto))
+                        {
+                            <div>
+                                <img id="profilePreview" src="@Url.Content(Model.Veterinarian.ProfilePhoto)" alt="Profile Picture" style="max-width: 200px; height: auto;" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- Social Media -->
+                <div class="pt-3">
+                    <div class="pb-3">
+                        <label class="edit-page-headng">Social Media</label>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="twitter" class="input-label-style">Twitter</label>
+                        <input asp-for="Veterinarian.X" class="form-control custom-form-control" />
+                        <span asp-validation-for="Veterinarian.X" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="facebook" class="input-label-style">Facebook</label>
+                        <input asp-for="Veterinarian.FaceBook"
+                               class="form-control custom-form-control" />
+                        <span asp-validation-for="Veterinarian.FaceBook" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="instagram" class="input-label-style">Instagram/Threads</label>
+                        <input asp-for="Veterinarian.Instagram"
+                               class="form-control custom-form-control" />
+                        <span asp-validation-for="Veterinarian.Instagram" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="youtube" class="input-label-style">YouTube</label>
+                        <input asp-for="Veterinarian.Youtube"
+                               class="form-control custom-form-control" />
+                        <span asp-validation-for="Veterinarian.Youtube" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="youtube" class="input-label-style">YouTube</label>
+                        <input asp-for="Veterinarian.TIkTok"
+                               class="form-control custom-form-control" />
+                        <span asp-validation-for="Veterinarian.TIkTok" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <!-- Clinic -->
+                <div class="py-3">
+                    <label class="edit-page-headng">Clinic</label>
+                </div>
+                <div class="body-bg p-3 mt-3">
+                    <div class="form-group mb-3">
+                        <label for="clinicName" class="input-label-style">Clinic Name (required)</label>
+                        <input asp-for="Clinic.ClinicName"
+                               class="form-control"
+                               required />
+                        <span asp-validation-for="Clinic.ClinicName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="clinicCountry" class="input-label-style">Clinic Address (required)</label>
+                        <label for="clinicCountry" class="input-label-style d-block">Country</label>
+                        <input asp-for="Clinic.Country"
+                               class="form-control"
+                               required />
+                        <span asp-validation-for="Clinic.Country" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="addressLine1" class="input-label-style">Address Line 1 (required)</label>
+                        <input asp-for="Clinic.AddressLine1"
+                               class="form-control"
+                               required />
+                        <span asp-validation-for="Clinic.AddressLine1" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="addressLine2" class="input-label-style">Address Line 2</label>
+                        <input asp-for="Clinic.AddressLine2" class="form-control" />
+                        <span asp-validation-for="Clinic.AddressLine2" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="clinicCity" class="input-label-style">City (required)</label>
+                            <input asp-for="Clinic.City"
+                                   class="form-control"
+                                   required />
+                            <span asp-validation-for="Clinic.City" class="text-danger"></span>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="clinicState" class="input-label-style">State (required)</label>
+                            <input asp-for="Clinic.State"
+                                   class="form-control"
+                                   required />
+                            <span asp-validation-for="Clinic.State" class="text-danger"></span>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="clinicZip" class="input-label-style">Zip Code (required)</label>
+                            <input asp-for="Clinic.ZipCode"
+                                   class="form-control"
+                                   required />
+                            <span asp-validation-for="Clinic.ZipCode" class="text-danger"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="clinicPhone" class="input-label-style">Clinic Phone (required)</label>
+                        <input asp-for="Clinic.ClinicPhone" class="form-control" />
+                        <span asp-validation-for="Clinic.ClinicPhone" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="clinicEmail" class="input-label-style">Clinic Email</label>
+                        <input asp-for="Clinic.ClinicEmail" type="email" class="form-control" />
+                        <span asp-validation-for="Clinic.ClinicEmail" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="clinicWebsite" class="input-label-style">Clinic Website</label>
+                        <input asp-for="Clinic.ClinicWebsite" type="url" class="form-control" />
+                        <span asp-validation-for="Clinic.ClinicWebsite" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <!-- Services Section -->
+                <div class="py-3">
+                    <label class="edit-page-headng">Services</label>
+                </div>
+                <div class="body-bg p-3">
+                    <div>
+                        <label class="input-label-style">
+                            What services do you and clinic provide that are of intrest
+                            to sporting dog enthusiasts
+                            <span class="text-muted">(required) </span>
+                        </label>
+                    </div>
+                    <div class="input-label-style">Check alla that aplly</div>
+
+                    @foreach (var service in Model.Services)
+                    {
+                        var isChecked = Model.SelectedServiceIds.Contains(service.Id) ? "checked" : "";
+                        <div class="form-check">
+                            <input type="checkbox" name="SelectedServiceIds" value="@service.Id" class="form-check-input" @Html.Raw(isChecked) />
+                            <label class="form-check-label input-label-style">
+                                @service.Name
+                            </label>
+                        </div>
+                    }
+                </div>
+
+
+                <!-- Survey Section -->
+                <div class="pt-3">
+                    <h2 class="edit-page-headng">Survey</h2>
+                </div>
+
+                <div class="body-bg p-3">
+                    <div class="border-bottom">
+                        <label class="form-label input-label-style">Survey Question</label>
+                    </div>
+                    @foreach (var question in Model.SurveyQuestions)
+                    {
+                        <div class="mb-3">
+                            <input type="hidden" asp-for="@question.SurveyQuestionId" />
+                            <label class="form-label input-label-style">@question.Text</label>
+                            @if (Model.SurveyOptions.Any(o => o.SurveyQuestionId == question.SurveyQuestionId))
+                            {
+                                <select asp-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="form-select">
+                                    <option value="">Select an option</option>
+                                    @foreach (var option in Model.SurveyOptions.Where(o => o.SurveyQuestionId == question.SurveyQuestionId))
+                                    {
+                                        <option value="@option.Text">@option.Text</option>
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                <input type="text" asp-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="form-control" />
+                            }
+                            <span asp-validation-for="SurveyResponses[question.SurveyQuestionId].ResponseText" class="text-danger"></span>
+                        </div>
+                    }
+
+                </div>
+
+
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success-custom w-25">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function previewImage(event) {
+                const input = event.target;
+                const preview = document.getElementById('profilePreview');
+
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        preview.src = e.target.result; // Update the src with the selected file
+                    };
+                    reader.readAsDataURL(input.files[0]); // Read the file as a data URL
+                }
+            }
+        </script>
+
+    </div>
+</body>
+</html>
+

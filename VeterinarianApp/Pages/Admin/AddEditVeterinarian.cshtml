@@ -15,8 +15,10 @@
         @if (Model.IsEditMode)
         {
             <input type="hidden" asp-for="Veterinarian.Id" />
+            <input type="hidden" asp-for="Veterinarian.Password" />
+            <input type="hidden" asp-for="Veterinarian.ConfirmPassword" />
         }
-        <div asp-validation-summary="All" class="text-danger"></div> 
+        <div asp-validation-summary="All" class="text-danger"></div>
 
 
         <label class="Veterinarian-style">Veterinarian Name</label>
@@ -59,18 +61,21 @@
                        for="updates">Sign up for news & Updates</label>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="password" class="input-label-style">Password</label>
-                <input asp-for="Veterinarian.Password" type="password"
-                       class="form-control custom-form-control" is-edit-mode="@Model.IsEditMode" required />
-                <span asp-validation-for="Veterinarian.Password" class="text-danger"></span>
+            @if (!Model.IsEditMode)
+            {
+                <div class="form-group mb-3">
+                    <label for="password" class="input-label-style">Password</label>
+                    <input asp-for="Veterinarian.Password" type="password"
+                           class="form-control custom-form-control" is-edit-mode="@Model.IsEditMode" required />
+                    <span asp-validation-for="Veterinarian.Password" class="text-danger"></span>
 
-            </div>
-            <div class="form-group mb-3">
-                <label for="confirmPassword" class="input-label-style">Re-type Password</label>
-                <input type="password" asp-for="Veterinarian.ConfirmPassword" is-edit-mode="@Model.IsEditMode"
-                       class="form-control custom-form-control" />
-            </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="confirmPassword" class="input-label-style">Re-type Password</label>
+                    <input type="password" asp-for="Veterinarian.ConfirmPassword" is-edit-mode="@Model.IsEditMode"
+                           class="form-control custom-form-control" />
+                </div>
+            }
 
             <div class="form-group mb-3">
                 <label for="personalNumber" class="input-label-style">Personal Number (required)</label>
@@ -225,9 +230,7 @@
 
             <div class="form-group mb-3">
                 <label for="clinicPhone" class="input-label-style">Clinic Phone (required)</label>
-                <input asp-for="Clinic.ClinicPhone"
-                       class="form-control"
-                       required />
+                <input asp-for="Clinic.ClinicPhone" class="form-control" />
                 <span asp-validation-for="Clinic.ClinicPhone" class="text-danger"></span>
 
             </div>
