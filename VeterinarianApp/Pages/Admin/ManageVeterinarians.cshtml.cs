@@ -30,7 +30,7 @@ namespace VeterinarianApp.Pages.Admin
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
 
-        private const int PageSize = 1;
+        private const int PageSize = 12;
 
 
         public async Task OnGetAsync([FromQuery] int page = 1)
@@ -49,17 +49,14 @@ namespace VeterinarianApp.Pages.Admin
             //Set the profile photo path
             foreach (var item in Veterinarians)
             {
-                if (item.ProfilePhoto != null)
+                var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", item.Id.ToString(), "Profilepicture.png");
+                if (System.IO.File.Exists(profilePhotoPath))
                 {
-                    var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", item.Id.ToString(), "Profilepicture.png");
-                    if (System.IO.File.Exists(profilePhotoPath))
-                    {
-                        item.ProfilePhoto += $"{item.Id}/Profilepicture.png";
-                    }
-                    else
-                    {
-                        item.ProfilePhoto += "/user-placeholder.png";
-                    }
+                    item.ProfilePhoto = Path.Combine("/assets", "Veterinarian", item.Id.ToString(), "Profilepicture.png");
+                }
+                else
+                {
+                    item.ProfilePhoto = Path.Combine("/assets", "Veterinarian", "user-placeholder.png");
                 }
             }
         }

@@ -37,17 +37,14 @@ namespace VeterinarianApp.Pages.Veterinarians
                 {
                     var VeterinarianId = int.Parse(userIdClaim.Value);
                     Veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Id == VeterinarianId);
-                    if (Veterinarian.ProfilePhoto != null)
+                    var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                    if (System.IO.File.Exists(profilePhotoPath))
                     {
-                        var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
-                        if (System.IO.File.Exists(profilePhotoPath))
-                        {
-                            Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
-                        }
-                        else
-                        {
-                            Veterinarian.ProfilePhoto += "/user-placeholder.png";
-                        }
+                        Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                    }
+                    else
+                    {
+                        Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", "user-placeholder.png");
                     }
                 }
             }

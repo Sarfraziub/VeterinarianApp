@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using VeterinarianApp.Data;
 using VeterinarianApp.Models;
 
@@ -47,9 +48,15 @@ namespace VeterinarianApp.Pages.Veterinarians
 
 
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync()
         {
-            Services = await _context.Services.ToListAsync();
+            int veterinarianId = 0;
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim != null)
+            {
+                veterinarianId = int.Parse(userIdClaim.Value);
+            }
+                Services = await _context.Services.ToListAsync();
             // Retrieve survey questions and options
             SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
             SurveyOptions = await _context.SurveyOptions.ToListAsync();
@@ -58,30 +65,27 @@ namespace VeterinarianApp.Pages.Veterinarians
                 .Include(v => v.Clinic)
                 .Include(v => v.VeterinarianServices)
                 .ThenInclude(vs => vs.Service)
-                .FirstOrDefaultAsync(v => v.Id == id);
+                .FirstOrDefaultAsync(v => v.Id == veterinarianId);
 
             if (Veterinarian == null)
             {
                 return NotFound();
             }
-            if (Veterinarian.ProfilePhoto != null)
+            var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+            if (System.IO.File.Exists(profilePhotoPath))
             {
-                var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
-                if (System.IO.File.Exists(profilePhotoPath))
-                {
-                    Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
-                }
-                else
-                {
-                    Veterinarian.ProfilePhoto += "/user-placeholder.png";
-                }
+                Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+            }
+            else
+            {
+                Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", "user-placeholder.png");
             }
             Clinic = Veterinarian.Clinic;
             SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();
 
 
             var responses = await _context.SurveyResponse
-                .Where(sr => sr.VeterinarianId == id)
+                .Where(sr => sr.VeterinarianId == veterinarianId)
                 .ToListAsync();
 
             SurveyResponses = SurveyQuestions.ToDictionary(

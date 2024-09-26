@@ -69,17 +69,14 @@ namespace VeterinarianApp.Pages.Admin
                 {
                     return NotFound();
                 }
-                if (Veterinarian.ProfilePhoto != null)
+                var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                if (System.IO.File.Exists(profilePhotoPath))
                 {
-                    var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
-                    if (System.IO.File.Exists(profilePhotoPath))
-                    {
-                        Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
-                    }
-                    else
-                    {
-                        Veterinarian.ProfilePhoto += "/user-placeholder.png";
-                    }
+                    Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                }
+                else
+                {
+                    Veterinarian.ProfilePhoto = Path.Combine("/assets", "Veterinarian", "user-placeholder.png");
                 }
                 Clinic = Veterinarian.Clinic;
                 SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();
@@ -101,6 +98,7 @@ namespace VeterinarianApp.Pages.Admin
             else
             {
                 Veterinarian = new Veterinarian();
+                Veterinarian.ApprovedBy = 1;
                 Clinic = new Clinic();
                 SelectedServiceIds = new List<int>();
                 IsEditMode = false;

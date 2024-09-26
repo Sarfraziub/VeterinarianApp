@@ -313,10 +313,14 @@
 
         <div class="mb-3">
             <label for="approvalStatus" class="form-label input-label-style">Approval Status</label>
-            <input asp-for="Veterinarian.ApprovedBy"
+            @* <input asp-for="Veterinarian.ApprovedBy"
                    class="form-control custom-form-control" />
-            <span asp-validation-for="Veterinarian.ApprovedBy" class="text-danger"></span>
-
+            <span asp-validation-for="Veterinarian.ApprovedBy" class="text-danger"></span> *@
+            <select asp-for="Veterinarian.ApprovedBy"
+                    class="form-control custom-form-control">
+                <option value="1">Approved</option>
+                <option value="2">Not Approved</option>
+            </select>
         </div>
 
         <div class="mb-3">
