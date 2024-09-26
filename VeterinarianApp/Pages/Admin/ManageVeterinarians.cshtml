@@ -10,7 +10,6 @@
     <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-0 mt-3">
         <div class="row w-100">
             <div class="col-md-6">
-      
             </div>
             <div class="col-md-6 pe-0">
                 <div class="d-flex justify-content-end gap-2">
@@ -36,11 +35,10 @@
                 {
                     <tr class="VetProfileRow">
                         <td class="ps-0" style="">
-         
-                                <img id="profile-image" src="@Url.Content(veterinarian.ProfilePhoto)"
-                                     class="profile-image rounded-circle"
-                                     alt="Vet Image"
-                                    />
+
+                            <img id="profile-image" src="@Url.Content(veterinarian.ProfilePhoto)"
+                                 class="profile-image rounded-circle"
+                                 alt="Vet Image" />
 
                         </td>
                         <td class="Veterinarian-Detail">
@@ -58,8 +56,7 @@
                         <td class="Veterinarian-Detail">
                             <span class="highlight-text">Phone: </span>@veterinarian.Phone
                         </td>
-                        <td class=""
-                            >
+                        <td class="">
                             <a class="btn btn-Modify" asp-page="./AddEditVeterinarian" asp-route-id="@veterinarian.Id">
                                 <img src="/images/ManageVeterinarians/User_fill_edit.svg"
                                      alt="" />
@@ -73,19 +70,38 @@
     </div>
     <div class="card-footer bg-transparent border-0 py-4">
         <div class="d-flex justify-content-center pe-1 align-items-center">
-            <button class="btn btn-view  me-2">
-                <img src="/images/ManageVeterinarians/Arrow_left_long.svg"
-                     alt="" />
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="/Admin/ManageVeterinarians?page=@(Model.CurrentPage - 1)"
+                   class="btn btn-view me-2">
+                    <img src="/images/ManageVeterinarians/Arrow_left_long.svg" alt="" />
+                </a>
+            }
+            <span class="mx-2">Page @Model.CurrentPage of @Model.TotalPages</span>
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a href="/Admin/ManageVeterinarians?page=@(Model.CurrentPage + 1)" class="btn btn-view">
+                    <img src="/images/ManageVeterinarians/Arrow_right_long.svg"
+                         alt="" />
+                </a>
+            }
+            @*  <button class="btn btn-view  me-2">
+            <img src="/images/ManageVeterinarians/Arrow_left_long.svg"
+            alt="" />
             </button>
             <span class="mx-2">Page 1 out of 6</span>
-            <button class="btn btn-view ">
-                <img src="/images/ManageVeterinarians/Arrow_right_long.svg"
-                     alt="" />
-            </button>
+            <button class="btn btn-view">
+            <img src="/images/ManageVeterinarians/Arrow_right_long.svg"
+            alt="" />
+            </button> *@
         </div>
     </div>
 </div>
-<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+
+@* <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" /> *@
+
+@Html.AntiForgeryToken()
 
 
 <!-- Modal -->
@@ -112,7 +128,7 @@
 
 
 @section Scripts {
-                     < script src = "https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#launchModal').click(function () {

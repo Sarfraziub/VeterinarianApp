@@ -27,10 +27,26 @@ namespace VeterinarianApp.Pages.Admin
         }
 
         public IList<Veterinarian> Veterinarians { get; set; }
+        public int CurrentPage { get; set; }
+        public int TotalPages { get; set; }
 
-        public async Task OnGetAsync()
+        private const int PageSize = 1;
+
+
+        public async Task OnGetAsync([FromQuery] int page = 1)
         {
-            Veterinarians = await _context.Veterinarians.ToListAsync();
+            CurrentPage = page;
+            // Get the total count of veterinarians
+            var totalCount = await _context.Veterinarians.CountAsync();
+            TotalPages = (int)System.Math.Ceiling(totalCount / (double)PageSize);
+
+            // Get the paginated list of veterinarians
+            Veterinarians = await _context.Veterinarians
+                .Skip((CurrentPage - 1) * PageSize)
+                .Take(PageSize)
+                .ToListAsync();
+
+            //Set the profile photo path
             foreach (var item in Veterinarians)
             {
                 if (item.ProfilePhoto != null)
@@ -47,6 +63,9 @@ namespace VeterinarianApp.Pages.Admin
                 }
             }
         }
+
+
+
         [HttpPost]
         public async Task<IActionResult> OnPostSendEmail([FromBody] EmailRequest emailRequest)
         {
