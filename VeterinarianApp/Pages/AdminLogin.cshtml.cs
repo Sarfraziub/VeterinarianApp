@@ -33,6 +33,17 @@ namespace VeterinarianApp.Pages
             public string Password { get; set; }
         }
 
+        public async Task<IActionResult> OnGet()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Admin/Dashboard");
+            }
+
+            return Page();
+        }
+
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

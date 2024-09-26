@@ -1,0 +1,31 @@
+﻿@page
+@model VeterinarianApp.Pages.Account.AccessDeniedModel
+@{
+}
+
+@if (Model.UserRole != null)
+{
+    <p>Your role is: @Model.UserRole</p>
+    <p>As a @Model.UserRole, you might want to:</p>
+    <ul>
+        @if (Model.UserRole == "Admin")
+        {
+            <li><a asp-page="/Admin/Dashboard">Go to Admin Dashboard</a></li>
+        }
+        else if (Model.UserRole == "Veterinarian")
+        {
+            <li><a asp-page="/Veterinarians/Dashboard">Go to Veterinarian Dashboard</a></li>
+        }
+    </ul>
+}
+
+
+
+
+
+
+
+
+
+
+

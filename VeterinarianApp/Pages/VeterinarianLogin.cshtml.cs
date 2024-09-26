@@ -25,8 +25,14 @@ namespace VeterinarianApp.Pages
         [BindProperty]
         public VeterinarianLoginInputModel InputModel { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Veterinarians/Dashboard");
+            }
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

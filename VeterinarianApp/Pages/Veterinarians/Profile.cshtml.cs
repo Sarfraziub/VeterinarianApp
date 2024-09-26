@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using VeterinarianApp.Data;
 using VeterinarianApp.Models;
 
@@ -22,15 +23,43 @@ namespace VeterinarianApp.Pages.Veterinarians
             _webHostEnvironment = webHostEnvironment;
         }
 
+
+
         [BindProperty]
         public Veterinarian Veterinarian { get; set; }
 
         [BindProperty]
-        public IFormFile? ProfilePhoto { get; set; }
+        public Clinic Clinic { get; set; }
+
+        [BindProperty]
+        public List<int> SelectedServiceIds { get; set; }
+
+        public IList<Service> Services { get; set; }
+
+        [BindProperty]
+        public Dictionary<int, SurveyResponse> SurveyResponses { get; set; }
+
+        public IList<SurveryQuestion> SurveyQuestions { get; set; }
+        public IList<SurveyOption> SurveyOptions { get; set; }
+
+        [BindProperty]
+        public IFormFile? ProfilePhoto { get; set; } // To handle the file upload 
+
+
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Veterinarian = await _context.Veterinarians.FindAsync(id);
+            Services = await _context.Services.ToListAsync();
+            // Retrieve survey questions and options
+            SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
+            SurveyOptions = await _context.SurveyOptions.ToListAsync();
+
+            Veterinarian = await _context.Veterinarians
+                .Include(v => v.Clinic)
+                .Include(v => v.VeterinarianServices)
+                .ThenInclude(vs => vs.Service)
+                .FirstOrDefaultAsync(v => v.Id == id);
+
             if (Veterinarian == null)
             {
                 return NotFound();
@@ -47,37 +76,126 @@ namespace VeterinarianApp.Pages.Veterinarians
                     Veterinarian.ProfilePhoto += "/user-placeholder.png";
                 }
             }
+            Clinic = Veterinarian.Clinic;
+            SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();
+
+
+            var responses = await _context.SurveyResponse
+                .Where(sr => sr.VeterinarianId == id)
+                .ToListAsync();
+
+            SurveyResponses = SurveyQuestions.ToDictionary(
+                q => q.SurveyQuestionId,
+                q => responses.FirstOrDefault(r => r.SurveyQuestionId == q.SurveyQuestionId) ?? new SurveyResponse
+                {
+                    SurveyQuestionId = q.SurveyQuestionId,
+                    VeterinarianId = Veterinarian.Id
+                });
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
+
             if (!ModelState.IsValid)
             {
+                Services = await _context.Services.ToListAsync();
+                SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
+                SurveyOptions = await _context.SurveyOptions.ToListAsync();
+
+                SurveyResponses = _context.SurveryQuestions.ToDictionary(
+                    q => q.SurveyQuestionId,
+                    q => new SurveyResponse { SurveyQuestionId = q.SurveyQuestionId }
+                );
                 return Page();
             }
 
-            var veterinarianInDb = await _context.Veterinarians.FindAsync(Veterinarian.Id);
-            if (veterinarianInDb == null)
+            var veterinarianToUpdate = await _context.Veterinarians
+                .Include(v => v.Clinic)
+                .Include(v => v.VeterinarianServices)
+                .FirstOrDefaultAsync(v => v.Id == Veterinarian.Id);
+
+            if (veterinarianToUpdate == null)
             {
                 return NotFound();
             }
 
-            veterinarianInDb.FirstName = Veterinarian.FirstName;
-            veterinarianInDb.LastName = Veterinarian.LastName;
-            veterinarianInDb.Email = Veterinarian.Email;
-            veterinarianInDb.Phone = Veterinarian.Phone;
-            veterinarianInDb.Instagram = Veterinarian.Instagram;
-            veterinarianInDb.Youtube = Veterinarian.Youtube;
-            veterinarianInDb.X = Veterinarian.X;
-            veterinarianInDb.FaceBook = Veterinarian.FaceBook;
-            veterinarianInDb.TIkTok = Veterinarian.TIkTok;
-            veterinarianInDb.LicenseNo = Veterinarian.LicenseNo;
+            // Update veterinarian
+            veterinarianToUpdate.FirstName = Veterinarian.FirstName;
+            veterinarianToUpdate.LastName = Veterinarian.LastName;
+            veterinarianToUpdate.Email = Veterinarian.Email;
+            veterinarianToUpdate.Phone = Veterinarian.Phone;
+            veterinarianToUpdate.LicenseNo = Veterinarian.LicenseNo;
+            veterinarianToUpdate.X = Veterinarian.X;
+            veterinarianToUpdate.Youtube = Veterinarian.Youtube;
+            veterinarianToUpdate.FaceBook = Veterinarian.FaceBook;
+            veterinarianToUpdate.TIkTok = Veterinarian.TIkTok;
+            veterinarianToUpdate.Instagram = Veterinarian.Instagram;
+            veterinarianToUpdate.ApprovedBy = Veterinarian.ApprovedBy;
+            veterinarianToUpdate.VetHuntScore = Veterinarian.VetHuntScore;
+            veterinarianToUpdate.ProfilePhoto = Veterinarian.ProfilePhoto.IsNullOrEmpty() ? veterinarianToUpdate.ProfilePhoto : Veterinarian.ProfilePhoto;
             if (!string.IsNullOrWhiteSpace(Veterinarian.Password))
-                veterinarianInDb.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
+                veterinarianToUpdate.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
 
-            // Handle Profile Photo upload
-            if (ProfilePhoto != null && ProfilePhoto.Length > 0)
+            // Update clinic
+            if (veterinarianToUpdate.Clinic != null)
+            {
+                veterinarianToUpdate.Clinic.ClinicName = Clinic.ClinicName;
+                veterinarianToUpdate.Clinic.Country = Clinic.Country;
+                veterinarianToUpdate.Clinic.AddressLine1 = Clinic.AddressLine1;
+                veterinarianToUpdate.Clinic.AddressLine2 = Clinic.AddressLine2;
+                veterinarianToUpdate.Clinic.City = Clinic.City;
+                veterinarianToUpdate.Clinic.State = Clinic.State;
+                veterinarianToUpdate.Clinic.ZipCode = Clinic.ZipCode;
+                veterinarianToUpdate.Clinic.ClinicPhone = Clinic.ClinicPhone;
+                veterinarianToUpdate.Clinic.ClinicEmail = Clinic.ClinicEmail;
+                veterinarianToUpdate.Clinic.ClinicWebsite = Clinic.ClinicWebsite;
+            }
+            else
+            {
+                // Handle case where clinic does not exist
+                // (Usually, this should not happen in edit mode if data is consistent)
+            }
+
+            // Remove existing services
+            _context.VeterinarianServices.RemoveRange(veterinarianToUpdate.VeterinarianServices);
+
+            // Add new services
+            foreach (var serviceId in SelectedServiceIds)
+            {
+                var vetService = new VeterinarianService
+                {
+                    VeterinarianId = Veterinarian.Id,
+                    ServiceId = serviceId
+                };
+                _context.VeterinarianServices.Add(vetService);
+            }
+
+            var existingResponses = await _context.SurveyResponse
+                .Where(sr => sr.VeterinarianId == Veterinarian.Id)
+                .ToListAsync();
+
+            _context.SurveyResponse.RemoveRange(existingResponses);
+            await _context.SaveChangesAsync();
+
+
+            // Add new responses
+            foreach (var kvp in SurveyResponses)
+            {
+                var questionId = kvp.Key;
+                var response = kvp.Value;
+
+                if (!string.IsNullOrEmpty(response.ResponseText))
+                {
+                    response.VeterinarianId = Veterinarian.Id;
+                    response.SurveyQuestionId = questionId;
+                    _context.SurveyResponse.Add(response);
+                }
+            }
+            await _context.SaveChangesAsync();
+            //Add update profile photo
+            if (ProfilePhoto != null)
             {
                 var fileName = "Profilepicture.png";
                 var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString());
@@ -95,14 +213,14 @@ namespace VeterinarianApp.Pages.Veterinarians
                 {
                     await ProfilePhoto.CopyToAsync(stream);
                 }
-                veterinarianInDb.ProfilePhoto = $"/assets/Veterinarian/";
+                Veterinarian.ProfilePhoto = $"/assets/Veterinarian/";
+                var vetCurrent = _context.Veterinarians.Where(x => x.Id == Veterinarian.Id).FirstOrDefault();
+                if (vetCurrent != null)
+                {
+                    vetCurrent.ProfilePhoto = Veterinarian.ProfilePhoto;
+                    _context.SaveChanges();
+                }
             }
-
-            veterinarianInDb.UpdatedAt = DateTime.Now; // Update the timestamp
-
-            _context.Attach(veterinarianInDb).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-
             return RedirectToPage("/Veterinarians/DashBoard");
         }
     }

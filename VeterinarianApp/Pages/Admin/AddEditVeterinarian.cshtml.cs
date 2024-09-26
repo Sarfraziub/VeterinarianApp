@@ -120,6 +120,9 @@ namespace VeterinarianApp.Pages.Admin
 
         public async Task<IActionResult> OnPostAsync()
         {
+
+
+
             if (!ModelState.IsValid)
             {
                 Services = await _context.Services.ToListAsync();
@@ -158,7 +161,7 @@ namespace VeterinarianApp.Pages.Admin
                 veterinarianToUpdate.TIkTok = Veterinarian.TIkTok;
                 veterinarianToUpdate.Instagram = Veterinarian.Instagram;
                 veterinarianToUpdate.ApprovedBy = Veterinarian.ApprovedBy;
-                veterinarianToUpdate.HuntVetScore = Veterinarian.HuntVetScore;
+                veterinarianToUpdate.VetHuntScore = Veterinarian.VetHuntScore;
                 veterinarianToUpdate.ProfilePhoto = Veterinarian.ProfilePhoto.IsNullOrEmpty() ? veterinarianToUpdate.ProfilePhoto : Veterinarian.ProfilePhoto;
                 if (!string.IsNullOrWhiteSpace(Veterinarian.Password))
                     veterinarianToUpdate.Password = _passwordHasher.HashPassword(Veterinarian, Veterinarian.Password);
@@ -207,6 +210,23 @@ namespace VeterinarianApp.Pages.Admin
             }
             else // Add mode
             {
+                //validate existing vet
+                var existingRecord = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Email == Veterinarian.Email);
+                if (existingRecord != null)
+                {
+                    Services = await _context.Services.ToListAsync();
+                    SurveyQuestions = await _context.SurveryQuestions.ToListAsync();
+                    SurveyOptions = await _context.SurveyOptions.ToListAsync();
+
+                    SurveyResponses = _context.SurveryQuestions.ToDictionary(
+                        q => q.SurveyQuestionId,
+                        q => new SurveyResponse { SurveyQuestionId = q.SurveyQuestionId }
+                    );
+                    IsEditMode = true;
+                    ModelState.AddModelError(string.Empty, "Veterinarian with this email alreday Exist in the system.");
+                    return Page();
+                }
+
 
                 //Hashed password
                 if (!string.IsNullOrWhiteSpace(Veterinarian.Password))
@@ -252,7 +272,7 @@ namespace VeterinarianApp.Pages.Admin
             //Add update profile photo
             if (ProfilePhoto != null)
             {
-                var fileName = "Profilepicture.png"; 
+                var fileName = "Profilepicture.png";
                 var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString());
 
                 // Ensure the directory exists, if not, create it
@@ -270,7 +290,9 @@ namespace VeterinarianApp.Pages.Admin
                 }
                 Veterinarian.ProfilePhoto = $"/assets/Veterinarian/";
                 var vetCurrent = _context.Veterinarians.Where(x => x.Id == Veterinarian.Id).FirstOrDefault();
-                if (vetCurrent != null) { vetCurrent.ProfilePhoto = Veterinarian.ProfilePhoto;
+                if (vetCurrent != null)
+                {
+                    vetCurrent.ProfilePhoto = Veterinarian.ProfilePhoto;
                     _context.SaveChanges();
                 }
             }

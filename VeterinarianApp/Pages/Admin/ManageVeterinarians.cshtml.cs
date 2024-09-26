@@ -56,6 +56,10 @@ namespace VeterinarianApp.Pages.Admin
             }
 
 
+            var existingRecord = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Email == emailRequest.Email);
+            if (existingRecord != null)
+                return BadRequest("Veterinarian with this email alreday Exist in the system.");
+
 
             var resetLink = Url.Page("/Account/Signup", pageHandler: null, values: new { email = emailRequest.Email, token = Guid.NewGuid().ToString() }, protocol: Request.Scheme);
 
