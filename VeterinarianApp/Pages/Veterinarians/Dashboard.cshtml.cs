@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,10 +15,12 @@ namespace VeterinarianApp.Pages.Veterinarians
     {
         private readonly ApplicationDbContext _context;
         private readonly IPasswordHasher<Veterinarian> _passwordHasher;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DashboardModel(ApplicationDbContext context)
+        public DashboardModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
@@ -36,7 +39,15 @@ namespace VeterinarianApp.Pages.Veterinarians
                     Veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(f => f.Id == VeterinarianId);
                     if (Veterinarian.ProfilePhoto != null)
                     {
-                        Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                        var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                        if (System.IO.File.Exists(profilePhotoPath))
+                        {
+                            Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                        }
+                        else
+                        {
+                            Veterinarian.ProfilePhoto += "/user-placeholder.png";
+                        }
                     }
                 }
             }

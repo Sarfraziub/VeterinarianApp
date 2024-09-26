@@ -37,7 +37,15 @@ namespace VeterinarianApp.Pages.Veterinarians
             }
             if (Veterinarian.ProfilePhoto != null)
             {
-                Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                if (System.IO.File.Exists(profilePhotoPath))
+                {
+                    Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                }
+                else
+                {
+                    Veterinarian.ProfilePhoto += "/user-placeholder.png";
+                }
             }
             return Page();
         }
@@ -71,17 +79,6 @@ namespace VeterinarianApp.Pages.Veterinarians
             // Handle Profile Photo upload
             if (ProfilePhoto != null && ProfilePhoto.Length > 0)
             {
-                //var fileName = "Profilepicture.png";
-                //// Path where the file will be stored
-                //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/ProfilePhotos", fileName);
-                //// Save the file
-                //using (var stream = new FileStream(filePath, FileMode.Create))
-                //{
-                //    await ProfilePhoto.CopyToAsync(stream);
-                //}
-
-                //// Update Veterinarian's Picture property with the path
-                //veterinarianInDb.ProfilePhoto = $"/images/ProfilePhotos/{fileName}";
                 var fileName = "Profilepicture.png";
                 var directoryPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString());
 

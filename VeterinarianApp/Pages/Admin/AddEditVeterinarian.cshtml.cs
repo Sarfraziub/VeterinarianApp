@@ -71,7 +71,15 @@ namespace VeterinarianApp.Pages.Admin
                 }
                 if (Veterinarian.ProfilePhoto != null)
                 {
-                    Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                    var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", Veterinarian.Id.ToString(), "Profilepicture.png");
+                    if (System.IO.File.Exists(profilePhotoPath))
+                    {
+                        Veterinarian.ProfilePhoto += $"{Veterinarian.Id}/Profilepicture.png";
+                    }
+                    else
+                    {
+                        Veterinarian.ProfilePhoto += "/user-placeholder.png";
+                    }
                 }
                 Clinic = Veterinarian.Clinic;
                 SelectedServiceIds = Veterinarian.VeterinarianServices.Select(vs => vs.ServiceId).ToList();

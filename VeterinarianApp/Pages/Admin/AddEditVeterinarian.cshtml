@@ -3,13 +3,12 @@
 @{
     ViewData["Title"] = Model.IsEditMode ? "Edit Veterinarian" : "Add Veterinarian";
 }
-<div class="text-center heading-color mb-4">
-    <h2>Add/Edit Veterinarian</h2>
+<div class=" mb-4">
+    <h1>Veterinarian Details</h1>
 </div>
-<div class="bg-white card shadow rounded border-0 p-4 mb-4 custom-width">
-    <div class="pb-3">
-        <h2 class="edit-page-headng">Personal Information</h2>
-    </div>
+<div class="bg-white shadow rounded border-0 p-4 mb-4 custom-width">
+ 
+   
     <form method="post" class="px-4" enctype="multipart/form-data">
         <!-- Veterinarian Name -->
         @if (Model.IsEditMode)
@@ -21,7 +20,7 @@
         <div asp-validation-summary="All" class="text-danger"></div>
 
 
-        <label class="Veterinarian-style">Veterinarian Name</label>
+        <h2 class="edit-page-heading">Personal Information</h2>
         <div class="mt-3">
             <div class="row">
                 <div class="form-group mb-3 col-md-6">
@@ -60,8 +59,7 @@
                 <label class="form-check-label input-label-style input-label-style"
                        for="updates">Sign up for news & Updates</label>
             </div>
-
-            @if (!Model.IsEditMode)
+             @if (!Model.IsEditMode)
             {
                 <div class="form-group mb-3">
                     <label for="password" class="input-label-style">Password</label>
@@ -76,7 +74,6 @@
                            class="form-control custom-form-control" />
                 </div>
             }
-
             <div class="form-group mb-3">
                 <label for="personalNumber" class="input-label-style">Personal Number (required)</label>
                 <small class="form-text text-muted d-block">We promise not to share this with the public.</small>
@@ -120,10 +117,8 @@
         </div>
         <!-- Social Media -->
         <div class="pt-3">
-            <div class="pb-3">
-                <label class="edit-page-headng">Social Media</label>
-            </div>
-
+         
+            <label class="edit-page-heading">Social Media</label>
             <div class="form-group mb-3">
                 <label for="twitter" class="input-label-style">X</label>
                 <input asp-for="Veterinarian.X" class="form-control custom-form-control" />
@@ -162,11 +157,9 @@
 
             </div>
         </div>
-        <!-- Clinic -->
-        <div class="py-3">
-            <label class="edit-page-headng">Clinic</label>
-        </div>
-        <div class="body-bg p-3 mt-3">
+
+       
+            <label class="edit-page-heading">Clinic</label>
             <div class="form-group mb-3">
                 <label for="clinicName" class="input-label-style">Clinic Name (required)</label>
                 <input asp-for="Clinic.ClinicName"
@@ -229,10 +222,8 @@
             </div>
 
             <div class="form-group mb-3">
-                <label for="clinicPhone" class="input-label-style">Clinic Phone (required)</label>
+                <label for="clinicPhone" class="input-label-style">Clinic Phone</label>
                 <input asp-for="Clinic.ClinicPhone" class="form-control" />
-                <span asp-validation-for="Clinic.ClinicPhone" class="text-danger"></span>
-
             </div>
 
             <div class="form-group mb-3">
@@ -248,12 +239,10 @@
                 <span asp-validation-for="Clinic.ClinicWebsite" class="text-danger"></span>
 
             </div>
-        </div>
-        <!-- Services Section -->
-        <div class="py-3">
-            <label class="edit-page-headng">Services</label>
-        </div>
-        <div class="body-bg p-3">
+        
+      
+        <h2 class="edit-page-heading">Services</h2>
+        <div class=" p-3">
             <div>
                 <label class="input-label-style">
                     What services do you and clinic provide that are of interest
@@ -277,10 +266,8 @@
 
 
         <!-- Survey Section -->
-        <div class="pt-3">
-            <h2 class="edit-page-headng">Survey</h2>
-        </div>
 
+        <h2 class="edit-page-heading">Survey</h2>
         <div class="body-bg p-3">
             <div class="border-bottom">
                 <label class="form-label input-label-style">Survey Question</label>
@@ -313,7 +300,7 @@
 
         <!-- Administrator Purposes Section -->
         <div class="py-3">
-            <label class="edit-page-headng">Administrator Purposes</label>
+            <label class="edit-page-heading">Administrator Purposes</label>
         </div>
 
         <div class="mb-3">

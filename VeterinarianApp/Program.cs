@@ -39,7 +39,6 @@ builder.Services.AddAuthentication(options =>
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
 
-
 var app = builder.Build();
 
 // Apply migrations and seed the database

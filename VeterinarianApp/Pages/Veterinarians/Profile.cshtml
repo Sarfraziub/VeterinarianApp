@@ -8,7 +8,7 @@
 </div>
 <div class="bg-white shadow rounded p-4 mb-4">
     <div class="pb-3">
-        <h2 class="edit-page-headng">Personal Information</h2>
+        <h2 class="edit-page-heading">Personal Information</h2>
     </div>
 
 
@@ -114,7 +114,7 @@
         <!-- Social Media -->
         <div class="pt-3">
             <div class="pb-3">
-                <label class="edit-page-headng">Social Media</label>
+                <label class="edit-page-heading">Social Media</label>
             </div>
 
             <div class="form-group mb-3">
@@ -159,7 +159,7 @@
 
         <!-- Administrator Purposes Section -->
         <div class="py-3">
-            <label class="edit-page-headng">Administrator Purposes</label>
+            <label class="edit-page-heading">Administrator Purposes</label>
         </div>
 
         <div class="mb-3">
@@ -174,7 +174,7 @@
             <label for="approvalStatus" class="form-label input-label-style">Approval Status</label>
             <input asp-for="Veterinarian.ApprovedBy" disabled
                    class="form-control custom-form-control" />
-            <span asp-validation-for="Veterinarian.ApprovedBy" class="text-danger"></span>
+            <span asp-validation-for="Veterinarian.ApprovedBy" disabled class="text-danger"></span>
 
         </div>
 

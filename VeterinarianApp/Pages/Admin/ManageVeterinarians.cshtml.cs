@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Net.Mail;
 using VeterinarianApp.Data;
 using VeterinarianApp.Helpers;
 using VeterinarianApp.Models;
@@ -16,12 +16,14 @@ namespace VeterinarianApp.Pages.Admin
     {
         private readonly ApplicationDbContext _context;
         private readonly SmtpSettings _smtpSettings;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
 
-        public ManageVeterinariansModel(ApplicationDbContext context, IOptions<SmtpSettings> smtpSettings)
+        public ManageVeterinariansModel(ApplicationDbContext context, IOptions<SmtpSettings> smtpSettings, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _smtpSettings = smtpSettings.Value;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IList<Veterinarian> Veterinarians { get; set; }
@@ -33,13 +35,18 @@ namespace VeterinarianApp.Pages.Admin
             {
                 if (item.ProfilePhoto != null)
                 {
-                    item.ProfilePhoto += $"{item.Id}/Profilepicture.png";
+                    var profilePhotoPath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "Veterinarian", item.Id.ToString(), "Profilepicture.png");
+                    if (System.IO.File.Exists(profilePhotoPath))
+                    {
+                        item.ProfilePhoto += $"{item.Id}/Profilepicture.png";
+                    }
+                    else
+                    {
+                        item.ProfilePhoto += "/user-placeholder.png";
+                    }
                 }
             }
         }
-
-
-
         [HttpPost]
         public async Task<IActionResult> OnPostSendEmail([FromBody] EmailRequest emailRequest)
         {
@@ -79,9 +86,6 @@ namespace VeterinarianApp.Pages.Admin
             else
                 return StatusCode(500, $"Error sending email");
         }
-
-
-
 
     }
 }

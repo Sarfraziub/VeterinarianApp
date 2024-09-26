@@ -245,6 +245,7 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AddressLine2")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -260,9 +261,11 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClinicPhone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClinicWebsite")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
@@ -397,6 +400,7 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FaceBook")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -407,6 +411,7 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Instagram")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -428,6 +433,7 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TIkTok")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -437,9 +443,11 @@ namespace VeterinarianApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("X")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Youtube")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

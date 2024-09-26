@@ -2,16 +2,15 @@
 @model VeterinarianApp.Pages.Admin.ManageVeterinariansModel
 @{
 }
-<div class="text-center heading-color mb-4">
-    <h2>Manage Veterinarians</h2>
-</div>
-<div class="card rounded shadow custom-width">
+
+<div class="panel rounded shadow custom-width">
+    <div class="text-center heading-color mb-4">
+        <h2>Manage Veterinarians</h2>
+    </div>
     <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-0 mt-3">
         <div class="row w-100">
             <div class="col-md-6">
-                <p class="Veterinarian-style mb-2 mb-md-0 card-title">
-                    Veterinarian list
-                </p>
+      
             </div>
             <div class="col-md-6 pe-0">
                 <div class="d-flex justify-content-end gap-2">
@@ -20,7 +19,6 @@
                              alt="" />
                         Add Veterinarian
                     </a>
-
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success-custom" id="launchModal">
                         <img src="/images/ManageVeterinarians/mail-02.svg"
@@ -33,43 +31,43 @@
     </div>
     <div class="card-body ">
         <div class="table-responsive ">
-            <table class="table">
+            <table class="table VetsTable">
                 @foreach (var veterinarian in Model.Veterinarians)
                 {
-                    <tr>
-                        <td class="ps-0" style="min-width: 250px;">
-                            <div class="d-flex">
-                                <img src="@Url.Content(veterinarian.ProfilePhoto)"
-                                     class="rounded-circle me-3"
+                    <tr class="VetProfileRow">
+                        <td class="ps-0" style="">
+         
+                                <img id="profile-image" src="@Url.Content(veterinarian.ProfilePhoto)"
+                                     class="profile-image rounded-circle"
                                      alt="Vet Image"
-                                     width="100"
-                                     height="100" />
-                                <div>
-                                    <span class="profile-heding">@veterinarian.FirstName @veterinarian.LastName</span>
-                                    <span class="profile-dis d-block">Veterinarian</span>
-                                </div>
-                            </div>
+                                    />
+
                         </td>
-                        <td class="dark-text">
-                            <span class="light-text">Id : </span>@veterinarian.Id
+                        <td class="Veterinarian-Detail">
+                            <span class="highlight-text">Name: </span>@veterinarian.FirstName @veterinarian.LastName
                         </td>
-                        <td class="dark-text">
-                            <span class="light-text">email : </span>@veterinarian.Email
+                        <td class="Veterinarian-Detail">
+                            <span class="highlight-text">ID: </span>@veterinarian.Id
                         </td>
-                        <td class="dark-text">
-                            <span class="light-text">Last Online : </span>2024/06/21
+                        <td class="Veterinarian-Detail">
+                            <span class="highlight-text">Status: </span>@veterinarian.ApprovedBy
                         </td>
-                        <td class="d-flex justify-content-end"
-                            style="min-width: 250px;">
-                            <a class="btn btn-success-custom" asp-page="./AddEditVeterinarian" asp-route-id="@veterinarian.Id">
-                                <img src="/images/ManageVeterinarians/User_fill_add.svg"
+                        <td class="Veterinarian-Detail">
+                            <span class="highlight-text">Email: </span>@veterinarian.Email
+                        </td>
+                        <td class="Veterinarian-Detail">
+                            <span class="highlight-text">Phone: </span>@veterinarian.Phone
+                        </td>
+                        <td class=""
+                            >
+                            <a class="btn btn-Modify" asp-page="./AddEditVeterinarian" asp-route-id="@veterinarian.Id">
+                                <img src="/images/ManageVeterinarians/User_fill_edit.svg"
                                      alt="" />
                                 Modify
                             </a>
                         </td>
                     </tr>
                 }
-
             </table>
         </div>
     </div>
@@ -87,7 +85,6 @@
         </div>
     </div>
 </div>
-
 <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
 
 
@@ -115,7 +112,7 @@
 
 
 @section Scripts {
-                 < script src = "https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+                     < script src = "https://code.jquery.com/jquery-3.6.0.min.js" ></script>
     <script>
         $(document).ready(function () {
             $('#launchModal').click(function () {

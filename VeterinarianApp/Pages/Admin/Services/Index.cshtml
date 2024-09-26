@@ -5,38 +5,44 @@
 }
 
 
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="header my-5">
-        <label class="admin-name-style">Hello, @User.Identity.Name</label>
-        <small class="d-block admin-name-dis">Have a nice day at work and stay healthy!</small>
-    </div>
-}
 
 
-<div class="text-center heading-color mb-4">
-    <h2>Manage Services</h2>
-</div>
+
 <!-- Manage Services Card -->
-<div class="card mx-auto p-3 shadow border-0" style="max-width: 500px">
-    <p class="Veterinarian-style">Services list</p>
+<div class="panel mx-auto p-3 shadow border-0" style="max-width: 850px">
 
+    <div class="text-center heading-color mb-4">
+        <h2>Manage Services</h2>
+    </div>
+    <div class="row w-100">
+        <div class="col-md-6">
+            <p class="Veterinarian-style mb-2 mb-md-0 card-title">
+               
+            </p>
+        </div>
+        <div class="col-md-6 pe-0">
+            <div class="d-flex justify-content-end gap-2">
+                <a class="btn btn-success-custom" asp-page="Create">
+                    <img src="/images/ManageVeterinarians/User_fill_add.svg"
+                         alt="" />
+                    Add Service
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <a class="btn modify-btn" asp-page="Create">
-        Create
-    </a>
     <!-- Service Item List -->
     <div class="table-responsive">
-        <table class="table">
+        <table class="table ServicesTable">
 
             @foreach (var service in Model.Services)
             {
                 <tr class="service-item">
-                    <td class="dark-text">
-                        <span class="light-text">ID :</span> @service.Id
+                    <td class="Veterinarian-Detail">
+                        <span class="highlight-text">ID :</span> @service.Id
                     </td>
-                    <td class="service-name">@service.Name</td>
-                    <td>
+                    <td class="Veterinarian-Detail">@service.Name</td>
+                    <td style="text-align:right;">
                         <a class="btn modify-btn" asp-page="Edit" asp-route-id="@service.Id">
                             <img src="/images/ManageVeterinarians/Edit-alt.svg"
                                  alt="" />
