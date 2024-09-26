@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/VeterinarianApp.styles.css" asp-append-version="true" />
     <link href="~/css/style.css" rel="stylesheet" />
 </head>
-<body>
+<body class="d-flex flex-column">
     <div class="sticky-top ">
         <nav class="border-bottom navbar navbar-expand-lg body-bg ">
             <div class="container-fluid">
@@ -58,11 +58,10 @@
             </div>
         </nav>
     </div>
-    <div class="d-flex">
+    <div class="d-flex flex-grow-1">
         <!-- Sidebar -->
         <div class="sidebar-bg py-3 ps-2"
-             id="sidebar"
-             style="height: 1024px;">
+             id="sidebar">
             <ul class="nav flex-column">
                 <li class="nav-item py-3">
                     <a class="nav-link  nav-link-Custom text-center p-0 @IsActive("/Veterinarians/Dashboard")" href="/Veterinarians/Dashboard">
@@ -106,8 +105,8 @@
             </main>
         </div>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top py-4 body-bg text-muted">
+        <div class="container ms-3">
             &copy; 2024 - VeterinarianApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>

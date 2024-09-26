@@ -127,7 +127,16 @@ namespace VeterinarianApp.Pages.Veterinarians
                 var newToken = await _userManager.GeneratePasswordResetTokenAsync(adminUser);
 
                 var resetPasswordResult = await _userManager.ResetPasswordAsync(adminUser, newToken, Password);
+                if (!resetPasswordResult.Succeeded)
+                {
+                    // Loop through errors and add them to the ModelState
+                    foreach (var error in resetPasswordResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
 
+                    return Page(); // Return the page with the error messages displayed
+                }
             }
             else
             {

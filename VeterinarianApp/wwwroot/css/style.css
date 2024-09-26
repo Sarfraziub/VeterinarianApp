@@ -2,6 +2,9 @@ body {
     font-family:"Work Sans";
     background-color: #dad9d9 !important;
 }
+html, body {
+    height: 100%;
+}
 /* navbar */
 .border-bottom {
     border-bottom: solid 2px #a0a0a0 !important;
@@ -256,28 +259,27 @@ button a {
 .custom-form-control {
    // background-color: #dad9d9;
 }
-
 .form-check-input:checked {
-    background-color: #df561b;
-    border-color: #df561b;
+    background-color: #df561b !important;
+    border-color: #df561b !important;
 }
 
 .form-check-input:focus {
-    border-color: #df561b;
+    border-color: #df561b !important;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem #df561b34;
+    box-shadow: 0 0 0 0.25rem #df561b34 !important;
 }
 
 .form-control:focus {
-    border-color: #df561b;
+    border-color: #df561b !important;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem #df561b34;
+    box-shadow: 0 0 0 0.25rem #df561b34 !important;
 }
 
 .form-select:focus {
-    border-color: #df561b;
+    border-color: #df561b !important;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem #df561b34;
+    box-shadow: 0 0 0 0.25rem #df561b34 !important;
 }
 
 .body-bg {
@@ -417,10 +419,10 @@ a {
 
 
 /*Heart Code*/
-.container {
+/*.container {
     margin:50px;
 }
-
+*/
 h1, h2, h3 {
     color: #ff5e1a!important;
  

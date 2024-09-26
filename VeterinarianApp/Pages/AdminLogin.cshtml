@@ -43,7 +43,7 @@
                             <a class="nav-link" href="/VeterinarianLogin">Veterinarian Dashboard</a>
                         </li>
                     </ul>
-                    <button class="btn btn-custom-Orange ms-md-3 border-2" type="button"><a href="https://hunt.vet/"></a>Back to Website</button>
+                    <button class="btn btn-custom-Orange ms-md-3 border-2" type="button"><a  href="https://hunt.vet/"></a>Back to Website</button>
                 </div>
             </div>
         </nav>
@@ -51,8 +51,8 @@
     <!-- Login Form -->
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 80vh;">
-            <div class="col-md-4 text-center">
-                <h1>Admin Login</h1>
+            <div class="col-md-4 ">
+                <h1 class="text-center">Admin Login</h1>
                 <form method="post">
                     <div asp-validation-summary="All" class="text-danger"></div> <!-- Displays model errors -->
 
@@ -67,7 +67,7 @@
                         <button type="submit" class="btn btn-Grey">Login</button>
                     </div>
                 </form>
-                <a asp-page="/Account/ForgotPassword" asp-route-isAdmin="true">Forgot Password</a>
+                <a asp-page="/Account/ForgotPassword" asp-route-isAdmin="true" class="float-start">Forgot password</a>
             </div>
         </div>
     </div>
