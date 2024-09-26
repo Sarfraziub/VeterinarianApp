@@ -44,20 +44,23 @@ namespace VeterinarianApp.Pages.Veterinarians
                 if (adminUser == null)
                 {
                     TempData["ErrorMessage"] = "Invalid Email";
-                    return Page();
+                    return RedirectToPage("/Account/Error");
+
 
                 }
                 else if (adminUser.Token != token.ToLower())
                 {
                     TempData["ErrorMessage"] = "Invalid Token";
-                    return Page();
+                    return RedirectToPage("/Account/Error");
+
 
                 }
 
                 else if (adminUser.TokenExpiry.Value.AddMinutes(5) <= DateTime.Now)
                 {
-                    TempData["ErrorMessage"] = "Token ha been expired";
-                    return Page();
+                    TempData["ErrorMessage"] = "Token has been expired";
+                    return RedirectToPage("/Account/Error");
+
                 }
 
 
@@ -68,20 +71,23 @@ namespace VeterinarianApp.Pages.Veterinarians
                 if (vetUser == null)
                 {
                     TempData["ErrorMessage"] = "Invalid Email";
-                    return Page();
+                    return RedirectToPage("/Account/Error");
+
 
                 }
                 else if (vetUser.Token != token.ToLower())
                 {
                     TempData["ErrorMessage"] = "Invalid Token";
-                    return Page();
+                    return RedirectToPage("/Account/Error");
+
 
                 }
 
                 else if (vetUser.TokenExpiry.Value.AddMinutes(5) <= DateTime.Now)
                 {
-                    TempData["ErrorMessage"] = "Token ha been expired";
-                    return Page();
+                    TempData["ErrorMessage"] = "Token has been expired";
+                    return RedirectToPage("/Account/Error");
+
 
                 }
             }
@@ -149,7 +155,7 @@ namespace VeterinarianApp.Pages.Veterinarians
             if (IsAdmin)
                 return RedirectToPage("/AdminLogin");
 
-
+            TempData["ErrorMessage"] = null;
             return RedirectToPage("/VeterinarianLogin");
 
         }
