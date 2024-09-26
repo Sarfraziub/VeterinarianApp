@@ -296,29 +296,7 @@
 
         </div>
 
-
-        <!-- Administrator Purposes Section -->
-        <div class="py-3">
-            <label class="edit-page-heading">Administrator Purposes</label>
-        </div>
-
-        <div class="mb-3">
-            <label for="vetHuntScore" class="form-label input-label-style">Vet Hunt Score</label>
-            <input asp-for="Veterinarian.VetHuntScore" disabled
-                   class="form-control custom-form-control" />
-            <span asp-validation-for="Veterinarian.VetHuntScore" class="text-danger"></span>
-
-        </div>
-
-        <div class="mb-3">
-            <label for="approvalStatus" class="form-label input-label-style">Approval Status</label>
-            <input asp-for="Veterinarian.ApprovedBy" disabled
-                   class="form-control custom-form-control" />
-            <span asp-validation-for="Veterinarian.ApprovedBy" class="text-danger"></span>
-
-        </div>
-
-        <div class="mb-3">
+        <div class="mb-3 mt-3">
             <button type="submit" class="btn btn-success-custom w-25">Submit</button>
         </div>
     </form>
