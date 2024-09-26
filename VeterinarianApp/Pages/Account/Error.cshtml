@@ -1,0 +1,13 @@
+﻿@page
+@model VeterinarianApp.Pages.Account.ErrorModel
+@{
+    Layout = null;
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}

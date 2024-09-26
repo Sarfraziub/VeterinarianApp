@@ -24,6 +24,8 @@ namespace VeterinarianApp.Models
         public int? VetHuntScore { get; set; }
         public string LicenseNo { get; set; }
         public string? ProfilePhoto { get; set; }
+        public string? Token { get; set; }
+        public DateTime? TokenExpiry { get; set; }
 
         public virtual Clinic? Clinic { get; set; }
         public virtual ICollection<VeterinarianService>? VeterinarianServices { get; set; }

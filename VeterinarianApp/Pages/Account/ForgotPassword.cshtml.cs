@@ -16,15 +16,28 @@ namespace VeterinarianApp.Pages.Veterinarians
         private readonly ApplicationDbContext _context;
         private readonly SmtpSettings _smtpSettings;
 
-        public ForgotPasswordModel(ApplicationDbContext context, IOptions<SmtpSettings> smtpSettings)
+        private readonly UserManager<AdminUser> _userManager;
+
+        public ForgotPasswordModel(ApplicationDbContext context, IOptions<SmtpSettings> smtpSettings, UserManager<AdminUser> userManager)
         {
             _context = context;
             _smtpSettings = smtpSettings.Value;
+            _userManager = userManager;
+        }
+
+
+        public async Task<IActionResult> OnGet(bool isAdmin = false)
+        {
+            IsAdmin = isAdmin;
+            return Page();
         }
 
 
         [BindProperty]
         public string Email { get; set; }
+
+        [BindProperty]
+        public bool IsAdmin { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,19 +46,49 @@ namespace VeterinarianApp.Pages.Veterinarians
                 return Page();
             }
 
-            // Find the veterinarian by email
-            var veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(v => v.Email == Email);
-            if (veterinarian == null)
+
+            var resetLink = "";
+
+            if (IsAdmin)
             {
-                TempData["ErrorMessage"] = "This email is not registered";
-                return Page();
+                var adminUser = await _userManager.FindByEmailAsync(Email);
+                if (adminUser == null)
+                {
+                    TempData["ErrorMessage"] = "This email is not registered";
+                    return Page();
+                }
+
+
+                var adminToken = Guid.NewGuid().ToString();
+                resetLink = Url.Page("/Account/ResetPassword", pageHandler: null, values: new { email = Email, token = adminToken, isAdmin = IsAdmin }, protocol: Request.Scheme);
+                adminUser.Token = adminToken;
+                adminUser.TokenExpiry = DateTime.Now;
+                await _userManager.UpdateAsync(adminUser);
             }
 
-            // Generate reset password token
-            var token = GenerateResetToken(veterinarian);
+            else
+            {
+                // Find the veterinarian by email
+                var veterinarian = await _context.Veterinarians.FirstOrDefaultAsync(v => v.Email == Email);
+                if (veterinarian == null)
+                {
+                    TempData["ErrorMessage"] = "This email is not registered";
+                    return Page();
+                }
+
+                var vetToken = Guid.NewGuid().ToString();
+
+                resetLink = Url.Page("/Account/ResetPassword", pageHandler: null, values: new { email = Email, token = vetToken, isAdmin = IsAdmin }, protocol: Request.Scheme);
+
+                veterinarian.Token = vetToken;
+                veterinarian.TokenExpiry = DateTime.Now;
+
+                await _context.SaveChangesAsync();
+            }
+
+
 
             // Create password reset link
-            var resetLink = Url.Page("/Account/ResetPassword", pageHandler: null, values: new { email = Email, token = token }, protocol: Request.Scheme);
 
             // Send email with the reset link
 
