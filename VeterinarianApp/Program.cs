@@ -29,8 +29,8 @@ builder.Services.AddAuthentication(options =>
 })
 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
 {
-    options.Cookie.Name = "YourAppName.Cookie";
-    //options.LoginPath = "/Account/Login";
+    options.Cookie.Name = "vethunt.Cookie";
+    options.LoginPath = "/AdminLogin";
     //options.LogoutPath = "/Account/Logout";
     //options.AccessDeniedPath = "/Account/AccessDenied";
 });
