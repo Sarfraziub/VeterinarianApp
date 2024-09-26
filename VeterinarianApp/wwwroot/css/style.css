@@ -1,4 +1,5 @@
 body {
+    font-family:"Work Sans";
     background-color: #dad9d9 !important;
 }
 /* navbar */
@@ -12,9 +13,27 @@ body {
     border-color: #ffffff !important;
 }
 
-.btn-Orange {
-    background-color: #ff5e1a !important;
+
+button {font-weight:600!important;
+
 }
+
+.btn-Orange {
+    background-color: #ff5e1a!important;
+}
+
+.btn-Grey {
+    background-color: #595959 !important;
+    color:white!important
+}
+
+.btn-Grey:hover {
+    background-color: #ff5e1a !important;
+    
+}
+
+
+
 
 /* sidebar */
 .sidebar-bg {
@@ -22,7 +41,7 @@ body {
 }
 
 .sidebar-text {
-    font-family: Work Sans;
+
     font-size: 11px;
     font-weight: 700;
     line-height: 12.9px;
@@ -38,8 +57,14 @@ body {
     font-weight: bold;
 }
 
+.nav-link a
+{color:#595959 }
+
+button a {
+    color: white!important
+}
+
 .sidebar-text {
-    font-family: Work Sans;
     font-size: 11px;
     font-weight: 700;
     line-height: 12.9px;
@@ -51,14 +76,7 @@ body {
     color: #ff5e1a;
 }
 
-/* Admin HOme page  */
-.heading {
-    color: #595959;
-    font-family: Work Sans;
-    font-size: 29px;
-    font-weight: 700;
-    line-height: 34.02px;
-}
+
 
 .icon-container {
     background-color: #ff5e1a;
@@ -66,16 +84,11 @@ body {
     height: 70px;
 }
 
-.heading-color {
-    color: #ff5e1a;
-    font-family: Work Sans;
-    font-size: 29px;
-    font-weight: 700;
-}
+
 
 .text-color {
     color: #595959;
-    font-family: Work Sans;
+ 
     font-size: 20px;
     font-weight: 400;
 }
@@ -83,7 +96,7 @@ body {
 /* fsdfsdfsdf */
 
 .Veterinarian-style {
-    font-family: Work Sans;
+ 
     font-size: 22px;
     font-weight: 500;
     line-height: 25.81px;
@@ -94,17 +107,15 @@ body {
 .btn-success-custom {
     background-color: #73b88f;
     color: #ffffff;
-    font-family: Work Sans;
+    font-weight:600;
     font-size: 14px;
-    font-weight: 400;
 }
 
     .btn-success-custom:hover {
         background-color: #579871;
         color: #ffffff;
-        font-family: Work Sans;
+     
         font-size: 14px;
-        font-weight: 400;
     }
 
     .btn-success-custom:active {
@@ -113,32 +124,30 @@ body {
         border-color: #579871 !important;
     }
 
-.profile-heding {
-    font-family: Work Sans;
-    font-size: 20px;
-    font-weight: 400;
+.profile-heading {
+ 
+    font-size: 18px;
+    font-weight: 600;
     color: #706f6f;
 }
 
 .profile-dis {
-    font-family: Work Sans;
+ 
     font-size: 16px;
     font-weight: 400;
     color: #e9aa62;
 }
 
-.light-text {
-    color: #b9b9b9;
-    font-family: Work Sans;
-    font-size: 12px;
-    font-weight: 400;
+.highlight-text {
+    color: #ff5e1a;
+ 
+    font-size: 18px;
+    font-weight: 600;
 }
 
-.dark-text {
-    color: #706f6f !important;
-    font-family: Work Sans;
-    font-size: 12px;
-    font-weight: 400;
+.Veterinarian-Detail {
+    color: #666;
+    font-weight: 500;
 }
 
 .btn-view {
@@ -183,21 +192,21 @@ body {
 
 /* dssadasd */
 .admin-name-style {
-    font-family: Work Sans;
+ 
     font-size: 20px;
     font-weight: 700;
     color: #595959;
 }
 
 .admin-name-dis {
-    font-family: Work Sans;
+ 
     font-size: 16px;
     font-weight: 400;
     color: #9a9a9a;
 }
 
 .service-name {
-    font-family: Work Sans;
+ 
     font-size: 20px;
     font-weight: 400;
     line-height: 23.46px;
@@ -223,29 +232,29 @@ body {
 
 /* fsdfsdfsdf */
 
-.edit-page-headng {
-    font-family: Work Sans;
-    font-size: 22px;
-    font-weight: 500;
+.edit-page-heading {
+ 
+    font-size: 25px;
+    font-weight: 600;
     color: #ff5e1a;
 }
 
 .input-label-style {
-    font-family: Work Sans;
+ 
     font-size: 16px;
     font-weight: 400;
     color: #595959;
 }
 
 .text-muted {
-    font-family: Work Sans;
+ 
     font-size: 12px;
     font-weight: 400;
     color: #595959;
 }
 
 .custom-form-control {
-    background-color: #dad9d9;
+   // background-color: #dad9d9;
 }
 
 .form-check-input:checked {
@@ -284,11 +293,26 @@ body {
     border-bottom-right-radius: 0;
 }
 
+.VetsTable {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.VetProfileRow td {
+    vertical-align:middle
+}
+
+.VetProfileRow {
+    margin: 10px;
+}
+
+
 .profile-image {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-right: 15px;
+    width: 80px;
+    height: 80px;
+    
+    object-fit:cover;
 }
 
 .services-grid {
@@ -310,7 +334,7 @@ body {
 }
 
 .hyperLink {
-    font-family: Work Sans;
+ 
     font-size: 14px;
     font-weight: 400;
     color: #ff5e1a;
@@ -318,38 +342,39 @@ body {
 }
 
 .Filter {
-    font-family: Work Sans;
+ 
     font-size: 16px;
     font-weight: 400;
 }
 
 .card-heding {
-    font-family: Work Sans;
+ 
     font-size: 20px;
     font-weight: 400;
     color: #000000;
 }
 
 .score-text {
-    font-family: Work Sans;
+ 
     font-size: 16px;
     font-weight: 400;
     color: #ff5e1a;
 }
 
 .adress {
-    font-family: Work Sans;
+ 
     font-size: 12px;
     font-weight: 400;
     color: #8b8b8b;
     text-decoration: none;
 }
 
+
+
 .service-item {
-    font-family: Work Sans;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14.08px;
+ 
+
+
     text-align: left;
     color: #a85151;
 }
@@ -363,8 +388,8 @@ body {
 }
 
 .card-text-color {
-    color: #595959;
-    font-family: Work Sans;
+    color: blue;
+ 
     font-size: 20px;
     font-weight: 400;
 }
@@ -388,4 +413,61 @@ a {
 
 .text-white {
     text-decoration: none !important
+}
+
+
+/*Heart Code*/
+.container {
+    margin:50px;
+}
+
+h1, h2, h3 {
+    color: #ff5e1a!important;
+ 
+    
+    font-weight: 700!important;
+    margin:20px
+}
+
+
+.card {
+    cursor: pointer;
+    border-radius: 30px;
+    min-height: 200px;
+    border: none;
+    transition: background-color 0.5s ease;
+}
+
+.card p {
+    font-weight: bold;
+    color: #595959;
+    transition: color 0.5s ease;
+}
+
+.card:hover {
+    background-color: #706f6f;
+
+}
+
+.card:hover p   {
+    color:white;
+}
+
+
+.flexcenter {
+justify-content:center;
+}
+
+#sidebar {
+    min-width:130px;
+}
+
+.panel {
+    background-color:white;
+    padding:10px;
+}
+
+
+table {
+    margin-top:25px;
 }
